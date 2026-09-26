@@ -1,1 +1,221 @@
+<!DOCTYPE html><html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DaryTech</title>
 
+<style>
+    body {
+        margin: 0;
+        background: #101010;
+        color: #eeeeee;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+        color: #66ccff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .header {
+        background: #181818;
+        border-bottom: 2px solid #333333;
+        padding: 20px;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 32px;
+    }
+
+    .header p {
+        margin: 6px 0 0 0;
+        color: #aaaaaa;
+    }
+
+    .nav {
+        background: #222222;
+        padding: 10px 20px;
+    }
+
+    .nav a {
+        margin-right: 20px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 25px 15px;
+    }
+
+    .hero {
+        background: #181818;
+        border: 1px solid #333333;
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+
+    .hero h2 {
+        margin-top: 0;
+        font-size: 28px;
+    }
+
+    .box {
+        background: #181818;
+        border: 1px solid #333333;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .box h2 {
+        margin-top: 0;
+        color: #66ccff;
+    }
+
+    .device {
+        display: inline-block;
+        vertical-align: top;
+        width: 27%;
+        min-width: 180px;
+        margin: 1%;
+        padding: 15px;
+        background: #222222;
+        border: 1px solid #444444;
+        box-sizing: border-box;
+    }
+
+    .device h3 {
+        margin-top: 0;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 25px;
+        margin-top: 30px;
+        background: #181818;
+        border-top: 1px solid #333333;
+        color: #888888;
+    }
+
+    .status {
+        color: #55dd77;
+    }
+
+    @media (max-width: 650px) {
+        .device {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .header h1 {
+            font-size: 26px;
+        }
+    }
+</style>
+
+</head><body><div class="header">
+    <h1>DaryTech</h1>
+    <p>Old tech. New tech. Everything in between.</p>
+</div>
+
+<div class="nav">
+    <a href="#home">Home</a>
+    <a href="#projects">Projects</a>
+    <a href="#devices">Devices</a>
+    <a href="#about">About</a>
+</div>
+
+<div class="container">
+
+    <div class="hero" id="home">
+        <h2>Welcome to DaryTech</h2>
+
+        <p>
+            A little corner of the internet dedicated to technology,
+            Android devices, Linux, retro hardware, DIY projects and
+            questionable things I do to old electronics.
+        </p>
+
+        <p class="status">
+            ● Website online
+        </p>
+    </div>
+
+    <div class="box" id="projects">
+        <h2>Projects</h2>
+
+        <h3>RokrOS</h3>
+        <p>
+            A small experimental operating-system-style project
+            running on ESP hardware and Android/Termux.
+        </p>
+
+        <h3>ESP Projects</h3>
+        <p>
+            OLED displays, keypads, web interfaces, sensors and
+            other tiny-computer experiments.
+        </p>
+
+        <h3>Legacy Web</h3>
+        <p>
+            Websites designed to remain usable on older phones,
+            tablets and computers.
+        </p>
+    </div>
+
+    <div class="box" id="devices">
+        <h2>Device Lab</h2>
+
+        <div class="device">
+            <h3>Redmi Note 14 5G</h3>
+            <p>Main modern Android device.</p>
+            <p>120 Hz display • 5G • HyperOS</p>
+        </div>
+
+        <div class="device">
+            <h3>Redmi 12 5G</h3>
+            <p>Modding machine.</p>
+            <p>crDroid • Magisk • OrangeFox</p>
+        </div>
+
+        <div class="device">
+            <h3>iPad 2</h3>
+            <p>Retro tablet experiment.</p>
+            <p>iOS 9 • Jailbroken</p>
+        </div>
+
+        <div class="device">
+            <h3>ESP32-S3</h3>
+            <p>Tiny development machine.</p>
+            <p>OLED • Keypad • Wi-Fi</p>
+        </div>
+    </div>
+
+    <div class="box" id="about">
+        <h2>About</h2>
+
+        <p>
+            DaryTech is a personal technology project exploring
+            everything from old smartphones to modern Android,
+            Linux, microcontrollers and DIY computing.
+        </p>
+
+        <p>
+            Built with plain HTML and CSS.
+            No framework. No tracking. No nonsense.
+        </p>
+    </div>
+
+</div>
+
+<div class="footer">
+    DaryTech &copy; 2026
+    <br>
+    Powered by GitHub Pages
+</div>
+
+</body>
+</html>
