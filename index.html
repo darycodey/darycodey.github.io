@@ -1,9 +1,13 @@
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DaryTech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DaryTech</title>
 
 <style>
+
     body {
         margin: 0;
         background: #101010;
@@ -104,7 +108,86 @@
         color: #55dd77;
     }
 
+    .broken {
+        color: #ff6666;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #333333;
+        border: 1px solid #444444;
+        padding: 3px 7px;
+        margin: 2px;
+        font-size: 12px;
+        color: #66ccff;
+    }
+
+    .forum-input,
+    .forum-textarea {
+        width: 100%;
+        box-sizing: border-box;
+        background: #101010;
+        color: #eeeeee;
+        border: 1px solid #444444;
+        padding: 10px;
+        margin-top: 6px;
+        margin-bottom: 12px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .forum-textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .forum-button {
+        background: #222222;
+        color: #66ccff;
+        border: 1px solid #555555;
+        padding: 10px 15px;
+        cursor: pointer;
+    }
+
+    .forum-button:hover {
+        background: #333333;
+    }
+
+    .forum-post {
+        background: #222222;
+        border: 1px solid #444444;
+        padding: 15px;
+        margin-top: 12px;
+    }
+
+    .forum-user {
+        color: #66ccff;
+        font-weight: bold;
+    }
+
+    .forum-time {
+        color: #777777;
+        font-size: 12px;
+    }
+
+    .forum-delete {
+        float: right;
+        color: #ff6666;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .terminal {
+        background: #080808;
+        border: 1px solid #333333;
+        padding: 15px;
+        font-family: monospace;
+        color: #55dd77;
+        overflow-x: auto;
+    }
+
     @media (max-width: 650px) {
+
         .device {
             width: 100%;
             margin: 5px 0;
@@ -113,109 +196,774 @@
         .header h1 {
             font-size: 26px;
         }
+
     }
+
 </style>
 
-</head><body><div class="header">
+</head>
+
+<body>
+
+
+<div class="header">
+
     <h1>DaryTech</h1>
-    <p>Old tech. New tech. Everything in between.</p>
+
+    <p>
+        Old tech. New tech. Everything in between.
+    </p>
+
 </div>
 
+
 <div class="nav">
+
     <a href="#home">Home</a>
     <a href="#projects">Projects</a>
     <a href="#devices">Devices</a>
+    <a href="#forum">Forum</a>
     <a href="#about">About</a>
+
 </div>
+
 
 <div class="container">
 
-    <div class="hero" id="home">
-        <h2>Welcome to DaryTech</h2>
 
-        <p>
-            A little corner of the internet dedicated to technology,
-            Android devices, Linux, retro hardware, DIY projects and
-            questionable things I do to old electronics.
-        </p>
+<!-- HOME -->
 
-        <p class="status">
-            ● Website online
-        </p>
-    </div>
+<div class="hero" id="home">
 
-    <div class="box" id="projects">
-        <h2>Projects</h2>
+    <h2>Welcome to DaryTech</h2>
 
-        <h3>RokrOS</h3>
-        <p>
-            A small experimental operating-system-style project
-            running on ESP hardware and Android/Termux.
-        </p>
+    <p>
+        A little corner of the internet dedicated to technology,
+        Android devices, Linux, retro hardware, DIY projects and
+        questionable things I do to old electronics.
+    </p>
 
-        <h3>ESP Projects</h3>
-        <p>
-            OLED displays, keypads, web interfaces, sensors and
-            other tiny-computer experiments.
-        </p>
+    <p class="status">
+        ● Website online
+    </p>
 
-        <h3>Legacy Web</h3>
-        <p>
-            Websites designed to remain usable on older phones,
-            tablets and computers.
-        </p>
-    </div>
+    <div class="terminal">
 
-    <div class="box" id="devices">
-        <h2>Device Lab</h2>
+        DARYTECH TECH LAB<br>
+        ------------------<br>
+        SYSTEM: ONLINE<br>
+        MAIN DEVICE: Redmi Note 14 5G<br>
+        DEV DEVICE: Redmi 12 5G<br>
+        ROM LAB: crDroid 11 + Magisk<br>
+        IoT LAB: ESP32 / ESP8266<br>
+        MAIN PROJECT: RokrOS<br>
+        STATUS: SOMEHOW STILL WORKING
 
-        <div class="device">
-            <h3>Redmi Note 14 5G</h3>
-            <p>Main modern Android device.</p>
-            <p>120 Hz display • 5G • HyperOS</p>
-        </div>
-
-        <div class="device">
-            <h3>Redmi 12 5G</h3>
-            <p>Modding machine.</p>
-            <p>crDroid • Magisk • OrangeFox</p>
-        </div>
-
-        <div class="device">
-            <h3>iPad 2</h3>
-            <p>Retro tablet experiment.</p>
-            <p>iOS 9 • Jailbroken</p>
-        </div>
-
-        <div class="device">
-            <h3>ESP32-S3</h3>
-            <p>Tiny development machine.</p>
-            <p>OLED • Keypad • Wi-Fi</p>
-        </div>
-    </div>
-
-    <div class="box" id="about">
-        <h2>About</h2>
-
-        <p>
-            DaryTech is a personal technology project exploring
-            everything from old smartphones to modern Android,
-            Linux, microcontrollers and DIY computing.
-        </p>
-
-        <p>
-            Built with plain HTML and CSS.
-            No framework. No tracking. No nonsense.
-        </p>
     </div>
 
 </div>
+
+
+<!-- PROJECTS -->
+
+<div class="box" id="projects">
+
+    <h2>Projects</h2>
+
+
+    <h3>RokrOS</h3>
+
+    <p>
+        A small experimental operating-system-style project
+        running on ESP hardware and Android/Termux.
+    </p>
+
+    <span class="tag">ESP32</span>
+    <span class="tag">Termux</span>
+    <span class="tag">C++</span>
+    <span class="tag">Bash</span>
+
+
+    <h3>ESP Projects</h3>
+
+    <p>
+        OLED displays, keypads, web interfaces, sensors and
+        other tiny-computer experiments.
+    </p>
+
+
+    <h3>Android Lab</h3>
+
+    <p>
+        Android ROMs, recovery, root, testing and generally
+        doing questionable things to phones.
+    </p>
+
+
+    <h3>Legacy Web</h3>
+
+    <p>
+        Websites designed to remain usable on older phones,
+        tablets and computers.
+    </p>
+
+</div>
+
+
+<!-- DEVICES -->
+
+<div class="box" id="devices">
+
+    <h2>Device Lab</h2>
+
+
+    <h3>📱 Phones</h3>
+
+
+    <div class="device">
+
+        <h3>Redmi Note 14 5G</h3>
+
+        <p>
+            Main modern Android device.
+        </p>
+
+        <p>
+            120 Hz • 5G • HyperOS
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Redmi 12 5G</h3>
+
+        <p>
+            Android modding machine.
+        </p>
+
+        <p>
+            crDroid • Magisk • OrangeFox
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Redmi Note 10 Pro</h3>
+
+        <p>
+            Old 120 Hz Xiaomi device.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Galaxy J5 2017</h3>
+
+        <p>
+            Old Samsung hardware.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Galaxy S8+</h3>
+
+        <p>
+            Samsung flagship with DeX experiments.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Huawei Mate 20 Lite</h3>
+
+        <p>
+            Old Huawei hardware.
+        </p>
+
+    </div>
+
+
+
+    <h3>🍎 Apple Devices</h3>
+
+
+    <div class="device">
+
+        <h3>iPhone 4 ×2</h3>
+
+        <p>
+            Vintage Apple hardware.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>iPhone 4S</h3>
+
+        <p>
+            Another piece of Apple history.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>iPad 2</h3>
+
+        <p>
+            iOS 9 retro tablet.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>iPad mini 1</h3>
+
+        <p>
+            Tiny old Apple tablet.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>iPod touch 2</h3>
+
+        <p>
+            Ancient pocket computer.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>iPad Air 3</h3>
+
+        <p class="broken">
+            BROKEN / REPAIR PROJECT
+        </p>
+
+    </div>
+
+
+
+    <h3>⚡ IoT / Embedded</h3>
+
+
+    <div class="device">
+
+        <h3>ESP32-S3 N16R8</h3>
+
+        <p>
+            Main ESP development board.
+        </p>
+
+        <p>
+            OLED • Keypad • Wi-Fi
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>ESP32-C3 SuperMini</h3>
+
+        <p>
+            Tiny ESP32 development board.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>ESP8266</h3>
+
+        <p>
+            Classic Wi-Fi microcontroller.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Raspberry Pi 3B+</h3>
+
+        <p>
+            Linux / SBC experiments.
+        </p>
+
+    </div>
+
+
+
+    <h3>🖥️ PC Hardware</h3>
+
+
+    <div class="device">
+
+        <h3>Dell OptiPlex 790 Motherboard</h3>
+
+        <p>
+            Motherboard from Skay.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Celeron Laptop</h3>
+
+        <p>
+            Chinese-brand laptop.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>DDR3 RAM</h3>
+
+        <p>
+            2 GB sticks ×4
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>500 GB HDD</h3>
+
+        <p>
+            Mechanical storage.
+        </p>
+
+    </div>
+
+
+    <h3>📺 TVs</h3>
+
+
+    <div class="device">
+
+        <h3>NEI 32NE4001</h3>
+
+        <p>
+            32-inch TV.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Philips 32"</h3>
+
+        <p>
+            Philips television.
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>TV #3</h3>
+
+        <p>
+            Third TV in the collection.
+        </p>
+
+    </div>
+
+
+    <h3>💾 Storage</h3>
+
+
+    <div class="device">
+
+        <h3>SD Cards</h3>
+
+        <p>
+            2 GB<br>
+            4 GB<br>
+            8 GB
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Sony Memory Card</h3>
+
+        <p>
+            1 GB
+        </p>
+
+    </div>
+
+
+    <h3>🎮 Miscellaneous</h3>
+
+
+    <div class="device">
+
+        <h3>Controllers</h3>
+
+        <p>
+            PS3 controller<br>
+            Xbox 360 controller
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>PC Cases</h3>
+
+        <p>
+            HP Compaq case<br>
+            No-name ATX case
+        </p>
+
+    </div>
+
+
+    <div class="device">
+
+        <h3>Arduino / ESP Parts</h3>
+
+        <p>
+            Assorted components and accessories.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- FORUM -->
+
+<div class="box" id="forum">
+
+    <h2>💬 DaryTech Forum</h2>
+
+    <p>
+        Talk about tech, repairs, projects, old hardware,
+        Linux, Android or whatever you've been messing with.
+    </p>
+
+    <p class="status">
+        ● Forum system online
+    </p>
+
+    <label>Username</label>
+
+    <input
+        class="forum-input"
+        id="forumUsername"
+        maxlength="24"
+        placeholder="Enter your username">
+
+
+    <label>Topic</label>
+
+    <input
+        class="forum-input"
+        id="forumTopic"
+        maxlength="80"
+        placeholder="Topic title">
+
+
+    <label>Message</label>
+
+    <textarea
+        class="forum-textarea"
+        id="forumMessage"
+        maxlength="1000"
+        placeholder="Write your message..."></textarea>
+
+
+    <button
+        class="forum-button"
+        onclick="createPost()">
+
+        Post message
+
+    </button>
+
+
+    <div id="forumPosts">
+
+        <p>
+            No posts yet. Be the first person to post.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ABOUT -->
+
+<div class="box" id="about">
+
+    <h2>About</h2>
+
+    <p>
+        DaryTech is a personal technology project exploring
+        everything from old smartphones to modern Android,
+        Linux, microcontrollers, retro Apple devices and
+        DIY computing.
+    </p>
+
+    <p>
+        Built with plain HTML, CSS and JavaScript.
+        No framework. No tracking. No nonsense.
+    </p>
+
+</div>
+
+
+</div>
+
 
 <div class="footer">
+
     DaryTech &copy; 2026
+
     <br>
+
     Powered by GitHub Pages
+
 </div>
+
+
+<script>
+
+const FORUM_KEY = "darytech_forum_posts";
+
+
+function escapeHTML(text) {
+
+    return text.replace(
+        /[&<>"']/g,
+
+        function(character) {
+
+            const entities = {
+
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#039;"
+
+            };
+
+            return entities[character];
+
+        }
+    );
+
+}
+
+
+function getPosts() {
+
+    return JSON.parse(
+        localStorage.getItem(FORUM_KEY) || "[]"
+    );
+
+}
+
+
+function savePosts(posts) {
+
+    localStorage.setItem(
+        FORUM_KEY,
+        JSON.stringify(posts)
+    );
+
+}
+
+
+function displayPosts() {
+
+    const posts = getPosts();
+
+    const container =
+        document.getElementById("forumPosts");
+
+
+    if (posts.length === 0) {
+
+        container.innerHTML =
+            "<p>No posts yet. Be the first person to post.</p>";
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    posts.forEach(function(post, index) {
+
+        const article =
+            document.createElement("div");
+
+        article.className = "forum-post";
+
+
+        article.innerHTML = `
+
+            <button
+                class="forum-delete"
+                onclick="deletePost(${index})">
+
+                delete
+
+            </button>
+
+            <div class="forum-user">
+                @${escapeHTML(post.username)}
+            </div>
+
+            <div class="forum-time">
+                ${escapeHTML(post.time)}
+            </div>
+
+            <h3>
+                ${escapeHTML(post.topic)}
+            </h3>
+
+            <p>
+                ${escapeHTML(post.message)
+                    .replace(/\n/g, "<br>")}
+            </p>
+
+        `;
+
+
+        container.appendChild(article);
+
+    });
+
+}
+
+
+function createPost() {
+
+    const username =
+        document.getElementById("forumUsername")
+        .value.trim();
+
+
+    const topic =
+        document.getElementById("forumTopic")
+        .value.trim();
+
+
+    const message =
+        document.getElementById("forumMessage")
+        .value.trim();
+
+
+    if (username === "") {
+
+        alert("Please enter a username.");
+
+        return;
+
+    }
+
+
+    if (message === "") {
+
+        alert("Please enter a message.");
+
+        return;
+
+    }
+
+
+    const posts = getPosts();
+
+
+    posts.unshift({
+
+        username: username,
+
+        topic:
+            topic || "Untitled topic",
+
+        message: message,
+
+        time:
+            new Date().toLocaleString()
+
+    });
+
+
+    savePosts(posts);
+
+
+    document.getElementById("forumMessage")
+        .value = "";
+
+    document.getElementById("forumTopic")
+        .value = "";
+
+
+    displayPosts();
+
+}
+
+
+function deletePost(index) {
+
+    const posts = getPosts();
+
+    posts.splice(index, 1);
+
+    savePosts(posts);
+
+    displayPosts();
+
+}
+
+
+displayPosts();
+
+</script>
+
 
 </body>
 </html>
