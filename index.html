@@ -1,867 +1,563 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DaryTech</title>
-
+<meta name="theme-color" content="#123b62">
+<title>DaryTech — Welcome</title>
 <style>
-    body {
-        margin: 0;
-        background: #101010;
-        color: #eeeeee;
-        font-family: Arial, Helvetica, sans-serif;
-    }
-
-    a {
-        color: #66ccff;
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-    .header {
-        background: #181818;
-        border-bottom: 2px solid #333;
-        padding: 20px;
-    }
-
-    .header h1 {
-        margin: 0;
-        font-size: 32px;
-    }
-
-    .header p {
-        margin: 6px 0 0;
-        color: #aaa;
-    }
-
-    .nav {
-        background: #222;
-        padding: 10px 20px;
-        overflow-x: auto;
-        white-space: nowrap;
-    }
-
-    .nav a {
-        margin-right: 20px;
-    }
-
-    .container {
-        max-width: 1000px;
-        margin: auto;
-        padding: 25px 15px;
-    }
-
-    .hero,
-    .box {
-        background: #181818;
-        border: 1px solid #333;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    .hero {
-        padding: 25px;
-    }
-
-    .hero h2 {
-        margin-top: 0;
-        font-size: 28px;
-    }
-
-    .box h2 {
-        margin-top: 0;
-        color: #66ccff;
-    }
-
-    .status {
-        color: #55dd77;
-    }
-
-    .warning {
-        color: #ffcc55;
-    }
-
-    .device-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 12px;
-    }
-
-    .device {
-        background: #222;
-        border: 1px solid #444;
-        padding: 15px;
-    }
-
-    .device h3 {
-        margin-top: 0;
-    }
-
-    .tag {
-        display: inline-block;
-        padding: 3px 7px;
-        margin-top: 5px;
-        background: #333;
-        border: 1px solid #555;
-        font-size: 12px;
-    }
-
-    .working {
-        color: #55dd77;
-    }
-
-    .broken {
-        color: #ff6666;
-    }
-
-    .testing {
-        color: #ffcc55;
-    }
-
-    .terminal {
-        background: #050505;
-        border: 1px solid #444;
-        padding: 15px;
-        font-family: monospace;
-        color: #55dd77;
-        overflow-x: auto;
-    }
-
-    .terminal input {
-        background: transparent;
-        border: none;
-        outline: none;
-        color: #55dd77;
-        font-family: monospace;
-        width: 80%;
-    }
-
-    .stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 10px;
-    }
-
-    .stat {
-        background: #222;
-        border: 1px solid #444;
-        padding: 15px;
-        text-align: center;
-    }
-
-    .stat strong {
-        display: block;
-        font-size: 25px;
-        color: #66ccff;
-    }
-
-    .timeline {
-        border-left: 2px solid #444;
-        padding-left: 20px;
-    }
-
-    .timeline-item {
-        margin-bottom: 20px;
-    }
-
-    .year {
-        color: #66ccff;
-        font-weight: bold;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    th,
-    td {
-        border: 1px solid #444;
-        padding: 9px;
-        text-align: left;
-    }
-
-    th {
-        background: #222;
-    }
-
-    td {
-        background: #181818;
-    }
-
-    .footer {
-        text-align: center;
-        padding: 25px;
-        margin-top: 30px;
-        background: #181818;
-        border-top: 1px solid #333;
-        color: #888;
-    }
-
-    button {
-        background: #222;
-        color: #eee;
-        border: 1px solid #555;
-        padding: 8px 12px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background: #333;
-    }
-
-    textarea,
-    input[type="text"] {
-        width: 100%;
-        box-sizing: border-box;
-        background: #111;
-        color: #eee;
-        border: 1px solid #444;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-
-    .forum-post {
-        background: #222;
-        border: 1px solid #444;
-        padding: 12px;
-        margin-top: 10px;
-    }
-
-    .retro {
-        font-family: "Courier New", monospace;
-    }
-
-    @media (max-width: 650px) {
-        .header h1 {
-            font-size: 26px;
-        }
-
-        .hero h2 {
-            font-size: 23px;
-        }
-
-        table {
-            font-size: 13px;
-        }
-    }
+:root {
+  --glass: rgba(215, 238, 255, .17);
+  --line: rgba(255,255,255,.55);
+  --text: #fff;
+  --blue: #0875bb;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font: 14px "Segoe UI", Tahoma, sans-serif;
+  background:
+    radial-gradient(ellipse at 20% 20%, #56b4dd 0, transparent 35%),
+    radial-gradient(ellipse at 80% 10%, #2178b8 0, transparent 35%),
+    linear-gradient(145deg, #163e78, #1d8cae 50%, #092b59);
+  background-attachment: fixed;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { color: #bceaff; }
+a:hover { color: white; }
+.desktop { min-height: 100vh; padding: 20px 20px 85px; }
+.desktop-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 90px);
+  gap: 14px;
+  align-content: start;
+  width: 100%;
+}
+.desktop-icon {
+  color: white;
+  text-align: center;
+  padding: 10px 4px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  text-shadow: 1px 2px 3px #00152b;
+}
+.desktop-icon:hover {
+  background: rgba(150,220,255,.2);
+  border-color: rgba(255,255,255,.45);
+}
+.desktop-icon .emoji { display: block; font-size: 34px; margin-bottom: 7px; }
+.window {
+  width: min(900px, 100%);
+  margin: 15px auto 35px;
+  border: 1px solid var(--line);
+  border-radius: 8px 8px 5px 5px;
+  overflow: hidden;
+  background: rgba(12,37,65,.83);
+  box-shadow: 0 15px 45px rgba(0,0,0,.4), inset 0 1px #fff;
+  backdrop-filter: blur(18px);
+}
+.titlebar {
+  min-height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 12px;
+  background: linear-gradient(#e8f7ffdd, #6aa6d6aa 48%, #22598bc9);
+  color: #071e36;
+  text-shadow: 0 1px white;
+  border-bottom: 1px solid #ffffff88;
+}
+.titlebar strong { font-size: 15px; }
+.window-controls { display: flex; gap: 5px; }
+.winbtn {
+  width: 28px;
+  height: 24px;
+  border: 1px solid #ffffffaa;
+  border-radius: 4px;
+  color: white;
+  background: linear-gradient(#86c7f1, #14548a);
+  text-shadow: 0 1px #123;
+}
+.winbtn.close { background: linear-gradient(#ffb4a5, #bb271e); }
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(225,244,255,.10);
+  border-bottom: 1px solid #ffffff25;
+}
+.toolbar a { text-decoration: none; }
+.content { padding: 20px; }
+h1, h2, h3 { margin-top: 0; }
+h1 { font-size: clamp(26px, 5vw, 42px); }
+h2 { font-size: 23px; }
+h3 { margin-bottom: 8px; }
+p { line-height: 1.6; }
+.hero {
+  padding: 25px 10px 35px;
+  text-align: center;
+}
+.hero .logo { font-size: 54px; filter: drop-shadow(0 4px 4px #001b37); }
+.hero p { max-width: 650px; margin: 12px auto; color: #e1f4ff; }
+.actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.aero-button {
+  display: inline-block;
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  border: 1px solid #b5e6ff;
+  border-radius: 5px;
+  background: linear-gradient(#8bd5f7, #1874b4 48%, #084578);
+  box-shadow: inset 0 1px #ffffffa8, 0 2px 5px #00162c88;
+}
+.aero-button:hover { filter: brightness(1.15); }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  gap: 14px;
+}
+.card {
+  padding: 16px;
+  border: 1px solid #ffffff3d;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #ffffff17, #061e3c55);
+  box-shadow: inset 0 1px #ffffff12;
+}
+.card p { color: #d8eaff; margin-bottom: 8px; }
+.card .icon { font-size: 28px; }
+.status {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 4px 0 8px;
+  border-radius: 3px;
+  background: #ffffff18;
+  border: 1px solid #ffffff38;
+  font-size: 12px;
+}
+.status.active { background: #187d55aa; }
+.status.retired { background: #8c6b20aa; }
+.status.repair { background: #9d453faa; }
+.muted { color: #bcd4e9; }
+.search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  color: white;
+  border: 1px solid #b8e3ff88;
+  border-radius: 4px;
+  background: #061d38aa;
+  outline: none;
+}
+.search::placeholder { color: #bed4e9; }
+.terminal {
+  padding: 15px;
+  background: #06100b;
+  border: 1px solid #4a8b60;
+  border-radius: 4px;
+  font: 13px/1.6 Consolas, monospace;
+}
+.terminal-output {
+  min-height: 110px;
+  max-height: 260px;
+  overflow: auto;
+  white-space: pre-wrap;
+  color: #8bffa7;
+}
+.terminal form { display: flex; gap: 8px; }
+.terminal label { color: #8bffa7; }
+.terminal input {
+  flex: 1;
+  min-width: 0;
+  color: #8bffa7;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Consolas, monospace;
+}
+.timeline { border-left: 2px solid #8ed9ff; padding-left: 18px; }
+.timeline-item { position: relative; margin: 18px 0; }
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #b8edff;
+  box-shadow: 0 0 8px #7ed9ff;
+}
+footer { text-align: center; padding: 20px; color: #cce5f7; }
+.taskbar {
+  position: fixed;
+  z-index: 50;
+  bottom: 0; left: 0; right: 0;
+  min-height: 49px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: linear-gradient(#9edbfae8, #246fa7ee 48%, #0b355feF);
+  border-top: 1px solid #d6f4ff;
+  box-shadow: 0 -4px 18px #00162c66;
+  backdrop-filter: blur(15px);
+}
+.start-button {
+  flex-shrink: 0;
+  width: 43px; height: 39px;
+  border-radius: 50%;
+  border: 2px solid #b9ecff;
+  background: radial-gradient(circle at 30% 25%, #e8fffc, #41c5ff 35%, #0870ba 68%, #05396d);
+  box-shadow: 0 0 9px #9beaff, inset 0 1px white;
+  font-size: 22px;
+  color: white;
+  text-shadow: 0 1px 4px #00365c;
+}
+.task-app {
+  min-width: 0;
+  max-width: 180px;
+  padding: 9px 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: white;
+  border: 1px solid #ffffff42;
+  border-radius: 3px;
+  background: #d9f2ff22;
+  text-decoration: none;
+}
+.task-app:hover { background: #d9f2ff55; }
+.clock {
+  margin-left: auto;
+  text-align: center;
+  min-width: 75px;
+  font-size: 12px;
+  text-shadow: 0 1px 3px #00152b;
+}
+.start-menu {
+  display: none;
+  position: fixed;
+  z-index: 60;
+  left: 10px;
+  bottom: 55px;
+  width: min(380px, calc(100vw - 20px));
+  color: white;
+  border: 1px solid #d3efff;
+  border-radius: 7px;
+  background: linear-gradient(120deg, #133d69f5, #061d3cf7);
+  box-shadow: 0 0 25px #00172caa, inset 0 1px #ffffff55;
+  overflow: hidden;
+}
+.start-menu.open { display: block; }
+.start-head { padding: 18px; background: #ffffff13; }
+.start-head strong { font-size: 20px; }
+.start-links { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 10px; }
+.start-links a {
+  padding: 12px 8px;
+  border-radius: 3px;
+  color: white;
+  text-decoration: none;
+}
+.start-links a:hover { background: #ffffff20; }
+.start-foot { padding: 10px 14px; background: #ffffff12; font-size: 12px; }
+.hidden { display: none !important; }
+@media (max-width: 540px) {
+  .desktop { padding: 10px 8px 75px; }
+  .desktop-icons { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
+  .window { margin-top: 10px; }
+  .content { padding: 14px; }
+  .task-app { display: none; }
+}
 </style>
 </head>
-
 <body>
+<div class="desktop">
+  <div class="desktop-icons">
+    <a class="desktop-icon" href="#home"><span class="emoji">🌐</span>Internet</a>
+    <a class="desktop-icon" href="#projects"><span class="emoji">🛠️</span>Projects</a>
+    <a class="desktop-icon" href="#devices"><span class="emoji">💻</span>My Devices</a>
+    <a class="desktop-icon" href="#terminal"><span class="emoji">⌨️</span>Terminal</a>
+    <a class="desktop-icon" href="#about"><span class="emoji">ℹ️</span>About DaryTech</a>
+  </div>
 
-<div class="header">
-    <h1>DaryTech</h1>
-    <p>Old tech. New tech. Everything in between.</p>
-</div>
+  <main class="window" id="home">
+    <header class="titlebar">
+      <strong>🪟 DaryTech — Welcome Center</strong>
+      <div class="window-controls">
+        <button class="winbtn" title="Minimize" onclick="document.querySelector('.window').scrollIntoView({behavior:'smooth'})">−</button>
+        <button class="winbtn" title="Maximize" onclick="document.querySelector('.window').classList.toggle('maximized')">□</button>
+        <button class="winbtn close" title="Close" onclick="document.querySelector('.content').scrollIntoView({behavior:'smooth'})">×</button>
+      </div>
+    </header>
+    <nav class="toolbar">
+      <a href="#home">Home</a><span>›</span>
+      <a href="#projects">Projects</a><span>›</span>
+      <a href="#devices">Hardware inventory</a><span>›</span>
+      <a href="#about">About</a>
+    </nav>
 
-<div class="nav">
-    <a href="#home">Home</a>
-    <a href="#projects">Projects</a>
-    <a href="#devices">Devices</a>
-    <a href="#repairs">Repairs</a>
-    <a href="#flea">Flea Market</a>
-    <a href="#terminal">Terminal</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#forum">Forum</a>
-    <a href="#about">About</a>
-</div>
+    <div class="content">
+      <section class="hero">
+        <div class="logo">🖥️</div>
+        <h1>Welcome to DaryTech</h1>
+        <p>Old hardware. New life. Linux, repairs, custom tech projects, and experiments from the DaryTech workshop.</p>
+        <div class="actions">
+          <a class="aero-button" href="#devices">Explore my hardware</a>
+          <a class="aero-button" href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">▶ YouTube channel</a>
+        </div>
+      </section>
 
-<div class="container">
+      <section id="projects">
+        <h2>🛠️ Projects</h2>
+        <div class="grid">
+          <article class="card">
+            <div class="icon">🌡️</div>
+            <h3>DaryTech HUD</h3>
+            <span class="status active">In use</span>
+            <p>A Linux desktop temperature and fan dashboard made with Python and GTK.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🔌</div>
+            <h3>RokrOS</h3>
+            <span class="status">Development project</span>
+            <p>An ESP32-S3 project targeting the N16R8 board, with 16 MB flash and 8 MB PSRAM.</p>
+          </article>
+          <article class="card">
+            <div class="icon">📡</div>
+            <h3>RokrNAS</h3>
+            <span class="status">Development project</span>
+            <p>An ESP8266-based project experimenting with an OLED display and access point features.</p>
+          </article>
+          <article class="card">
+            <div class="icon">♻️</div>
+            <h3>Old hardware revival</h3>
+            <span class="status active">DaryTech spirit</span>
+            <p>Repairing, reusing, and experimenting with older computers instead of wasting useful tech.</p>
+          </article>
+        </div>
+      </section>
 
-    <!-- HOME -->
+      <section id="devices" style="margin-top:35px">
+        <h2>💾 Hardware inventory</h2>
+        <p class="muted">Known devices and their current project status.</p>
+        <input class="search" id="deviceSearch" type="search" placeholder="Search devices, specs, or status…" aria-label="Search hardware inventory">
+        <div class="grid" id="deviceGrid" style="margin-top:15px">
+          <article class="card device">
+            <div class="icon">💻</div>
+            <h3>Dell Latitude E6330</h3>
+            <span class="status active">Main laptop</span>
+            <p><b>CPU:</b> Intel Core i5-3320M</p>
+            <p><b>RAM:</b> 8 GB DDR3</p>
+            <p><b>Storage:</b> 120 GB SATA SSD</p>
+            <p><b>OS:</b> Linux Mint 22.3</p>
+            <p>Repasted and revived. Battery needs replacement.</p>
+          </article>
 
-    <div class="hero" id="home">
-        <h2>Welcome to DaryTech</h2>
+          <article class="card device">
+            <div class="icon">📱</div>
+            <h3>iPhone 6s</h3>
+            <span class="status">Bypassed · Wi-Fi use</span>
+            <p><b>Storage:</b> 32 GB</p>
+            <p><b>iOS:</b> 15.8.7</p>
+            <p><b>Battery health:</b> 77% (last reported)</p>
+            <p>Touch ID unavailable. Used as a Wi-Fi device.</p>
+          </article>
 
-        <p>
-            A personal technology archive covering Android,
-            Linux, retro hardware, microcontrollers, repairs,
-            flea-market finds and questionable experiments.
-        </p>
+          <article class="card device">
+            <div class="icon">🖥️</div>
+            <h3>Lenovo ThinkCentre M57e</h3>
+            <span class="status retired">DaryCentre · Retired</span>
+            <p><b>CPU:</b> Core 2 Duo E8400 @ 3.0 GHz</p>
+            <p><b>RAM:</b> 3 GB DDR2</p>
+            <p><b>GPU:</b> NVIDIA GeForce GT 730</p>
+            <p><b>Storage:</b> 500 GB HDD</p>
+            <p><b>OS:</b> Windows 7 Professional</p>
+            <p>Retired, intact, switched off, and preserved for a possible future comeback.</p>
+          </article>
 
-        <p class="status">
-            ● DaryTech website ONLINE
-        </p>
+          <article class="card device">
+            <div class="icon">🧰</div>
+            <h3>HP Compaq dc7900 SFF</h3>
+            <span class="status repair">Disassembled · Not POSTing</span>
+            <p><b>Model:</b> FU035ET#ABH</p>
+            <p><b>Storage:</b> Kingston 120 GB SSD</p>
+            <p>Currently disassembled; no image or POST. Repair postponed until later.</p>
+          </article>
 
-        <p class="warning">
-            ⚠ Some hardware may be broken. Some decisions may also be broken.
-        </p>
-    </div>
+          <article class="card device">
+            <div class="icon">📱</div>
+            <h3>Redmi Note 14 5G</h3>
+            <span class="status active">Daily phone</span>
+            <p><b>CPU:</b> MediaTek Dimensity 7025 Ultra</p>
+            <p><b>RAM / storage:</b> 8 GB / 256 GB</p>
+            <p><b>Display:</b> 120 Hz</p>
+            <p>HyperOS / Android 16, as last reported.</p>
+          </article>
 
-    <!-- LAB STATUS -->
+          <article class="card device">
+            <div class="icon">📱</div>
+            <h3>Redmi 12 5G</h3>
+            <span class="status">Custom ROM experiments</span>
+            <p><b>CPU:</b> Snapdragon 4 Gen 2</p>
+            <p><b>RAM:</b> 4 GB</p>
+            <p><b>Display:</b> 90 Hz</p>
+            <p>Used for Android custom ROM experimentation.</p>
+          </article>
 
-    <div class="box">
-        <h2>Lab Status</h2>
+          <article class="card device">
+            <div class="icon">🍎</div>
+            <h3>iPad 2</h3>
+            <span class="status">Older Apple device</span>
+            <p><b>Model:</b> A1396</p>
+            <p><b>iOS:</b> 9.3.5 / 9.3.6</p>
+            <p>Possible live-view display project. Speaker has an issue.</p>
+          </article>
 
+          <article class="card device">
+            <div class="icon">🔧</div>
+            <h3>ESP32-S3 N16R8</h3>
+            <span class="status">RokrOS target board</span>
+            <p><b>Flash:</b> 16 MB</p>
+            <p><b>PSRAM:</b> 8 MB</p>
+            <p>Target board for the RokrOS embedded project.</p>
+          </article>
+        </div>
+        <p id="noResults" class="hidden">No matching devices found.</p>
+      </section>
+
+      <section id="terminal" style="margin-top:35px">
+        <h2>⌨️ DaryTech Terminal</h2>
+        <p class="muted">A simulated browser terminal — commands here do not execute on your computer.</p>
         <div class="terminal">
-            DaryTech Lab Status<br>
-            --------------------<br>
-            iPhone 6S ........ ONLINE<br>
-            RokrOS ......... DEVELOPMENT<br>
-            ESP32-S3 ....... ACTIVE<br>
-            Redmi 12 5G ....... LineageOS 24 Android 17<br>
-            Redmi Note 14 .. MAIN PHONE<br>
-            iPad 2 ......... iOS 9.3.5<br>
-            Flea Market .... ACTIVE<br>
+          <div id="terminalOutput" class="terminal-output">DaryTech Terminal [Version 1.0]
+Type 'help' to see available commands.
+</div>
+          <form id="terminalForm">
+            <label for="terminalInput">C:\DARYTECH&gt;</label>
+            <input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command">
+          </form>
         </div>
-    </div>
+      </section>
 
-    <!-- STATS -->
-
-    <div class="box">
-        <h2>Collection Statistics</h2>
-
-        <div class="stats">
-            <div class="stat">
-                <strong>6</strong>
-                Phones
-            </div>
-
-            <div class="stat">
-                <strong>7</strong>
-                Apple Devices
-            </div>
-
-            <div class="stat">
-                <strong>4</strong>
-                IoT Boards
-            </div>
-
-            <div class="stat">
-                <strong>3</strong>
-                TVs
-            </div>
-
-            <div class="stat">
-                <strong>4</strong>
-                Storage Items
-            </div>
-
-            <div class="stat">
-                <strong>2</strong>
-                Controllers
-            </div>
-        </div>
-    </div>
-
-    <!-- PROJECTS -->
-
-    <div class="box" id="projects">
-        <h2>Projects</h2>
-
-        <div class="device-grid">
-
-            <div class="device">
-                <h3>RokrOS</h3>
-                <p>
-                    Experimental operating-system-style project
-                    built around Android/Termux and ESP hardware.
-                </p>
-                <span class="tag working">ACTIVE</span>
-            </div>
-
-            <div class="device">
-                <h3>ESP Projects</h3>
-                <p>
-                    OLED displays, keypads, sensors, speakers,
-                    Wi-Fi and tiny web interfaces.
-                </p>
-                <span class="tag working">ACTIVE</span>
-            </div>
-
-            <div class="device">
-                <h3>Android Lab</h3>
-                <p>
-                    Custom ROMs, recoveries, Magisk and experiments
-                    with older Xiaomi devices.
-                </p>
-                <span class="tag working">ACTIVE</span>
-            </div>
-
-            <div class="device">
-                <h3>Legacy Web</h3>
-                <p>
-                    Websites designed to remain usable on old
-                    phones, tablets and computers.
-                </p>
-                <span class="tag working">ACTIVE</span>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- DEVICES -->
-
-    <div class="box" id="devices">
-        <h2>Device Lab</h2>
-
-        <h3>Phones</h3>
-
-        <div class="device-grid">
-
-            <div class="device">
-                <h3>Redmi Note 14 5G</h3>
-                <p>Main modern Android device.</p>
-                <p>8 GB RAM • 256 GB • 120 Hz • 5G</p>
-                <span class="tag working">MAIN</span>
-            </div>
-
-            <div class="device">
-                <h3>Redmi 12 5G</h3>
-                <p>Custom ROM / modding machine.</p>
-                <p>crDroid 11 • Magisk • OrangeFox</p>
-                <span class="tag working">MODDED</span>
-            </div>
-
-            <div class="device">
-                <h3>Redmi Note 10 Pro</h3>
-                <p>Older Xiaomi device.</p>
-                <p>AMOLED • 120 Hz</p>
-                <span class="tag testing">REPAIR / TESTING</span>
-            </div>
-
-            <div class="device">
-                <h3>Galaxy J5 2017</h3>
-                <p>Older Samsung Android device.</p>
-                <span class="tag">LEGACY</span>
-            </div>
-
-            <div class="device">
-                <h3>Galaxy S8+</h3>
-                <p>Samsung flagship with DeX support.</p>
-                <p>Android 9</p>
-                <span class="tag working">WORKING</span>
-            </div>
-
-            <div class="device">
-                <h3>Huawei Mate 20 Lite</h3>
-                <p>Older Huawei device.</p>
-                <p>6 GB RAM • 128 GB</p>
-                <span class="tag broken">PARTS</span>
-            </div>
-
-        </div>
-
-        <h3>Apple Collection</h3>
-
-        <div class="device-grid">
-
-            <div class="device">
-                <h3>iPhone 4 ×2</h3>
-                <p>Classic Apple hardware.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-            <div class="device">
-                <h3>iPhone 4S</h3>
-                <p>Classic Apple hardware.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-            <div class="device">
-                <h3>iPad 2</h3>
-                <p>iOS 9.3.5 • Jailbroken</p>
-                <span class="tag working">ACTIVE</span>
-            </div>
-
-            <div class="device">
-                <h3>iPad mini 1</h3>
-                <p>First-generation mini.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-            <div class="device">
-                <h3>iPod touch 2</h3>
-                <p>Classic iPod touch.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-            <div class="device">
-                <h3>iPad Air 3</h3>
-                <p>Broken display.</p>
-                <span class="tag broken">BROKEN</span>
-            </div>
-
-        </div>
-
-        <h3>IoT & Embedded</h3>
-
-        <div class="device-grid">
-
-            <div class="device">
-                <h3>ESP32-S3 N16R8</h3>
-                <p>16 MB Flash • 8 MB PSRAM</p>
-                <p>OLED • Keypad • Speaker • Wi-Fi</p>
-                <span class="tag working">ACTIVE</span>
-            </div>
-
-            <div class="device">
-                <h3>ESP32-C3 SuperMini</h3>
-                <p>Small ESP32 development board.</p>
-                <span class="tag">DEV BOARD</span>
-            </div>
-
-            <div class="device">
-                <h3>ESP8266</h3>
-                <p>Wi-Fi microcontroller.</p>
-                <span class="tag">DEV BOARD</span>
-            </div>
-
-            <div class="device">
-                <h3>Raspberry Pi 3B+</h3>
-                <p>Linux single-board computer.</p>
-                <span class="tag">SBC</span>
-            </div>
-
-        </div>
-
-        <h3>Computers & Parts</h3>
-
-        <div class="device-grid">
-
-            <div class="device">
-                <h3>Dell OptiPlex 790 Motherboard</h3>
-                <p>Desktop motherboard from Skay.</p>
-                <span class="tag">PARTS</span>
-            </div>
-
-            <div class="device">
-                <h3>Chinese Celeron Laptop</h3>
-                <p>Small laptop from a Chinese brand.</p>
-                <span class="tag testing">TESTING</span>
-            </div>
-
-            <div class="device">
-                <h3>ASUS L8400</h3>
-                <p>Vintage ASUS laptop.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-            <div class="device">
-                <h3>Dell Thunderbolt Dock</h3>
-                <p>Docking station for compatible systems.</p>
-                <span class="tag">DOCK</span>
-            </div>
-
-            <div class="device">
-                <h3>DDR3 RAM</h3>
-                <p>4 × 2 GB sticks.</p>
-                <span class="tag">PARTS</span>
-            </div>
-
-            <div class="device">
-                <h3>500 GB HDD</h3>
-                <p>Mechanical storage.</p>
-                <span class="tag">STORAGE</span>
-            </div>
-
-        </div>
-
-        <h3>Tablets & Other Hardware</h3>
-
-        <div class="device-grid">
-
-            <div class="device">
-                <h3>e-boda Z700 IzzyComm</h3>
-                <p>Broken Android tablet.</p>
-                <span class="tag broken">BROKEN</span>
-            </div>
-
-            <div class="device">
-                <h3>3 TVs</h3>
-                <p>Including NEI 32NE4001 and Philips 32".</p>
-                <span class="tag">DISPLAY</span>
-            </div>
-
-            <div class="device">
-                <h3>PS3 Controller</h3>
-                <p>Older PlayStation controller.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-            <div class="device">
-                <h3>Xbox 360 Controller</h3>
-                <p>Classic Xbox controller.</p>
-                <span class="tag">RETRO</span>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- STORAGE -->
-
-    <div class="box">
-        <h2>Storage Archive</h2>
-
-        <table>
-            <tr>
-                <th>Type</th>
-                <th>Capacity</th>
-                <th>Quantity</th>
-            </tr>
-
-            <tr>
-                <td>SD Card</td>
-                <td>2 GB</td>
-                <td>1</td>
-            </tr>
-
-            <tr>
-                <td>SD Card</td>
-                <td>4 GB</td>
-                <td>1</td>
-            </tr>
-
-            <tr>
-                <td>SD Card</td>
-                <td>8 GB</td>
-                <td>1</td>
-            </tr>
-
-            <tr>
-                <td>Sony Memory Card</td>
-                <td>1 GB</td>
-                <td>1</td>
-            </tr>
-
-            <tr>
-                <td>Hard Drive</td>
-                <td>500 GB</td>
-                <td>1</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- REPAIR BENCH -->
-
-    <div class="box" id="repairs">
-        <h2>Repair Bench</h2>
-
-        <table>
-            <tr>
-                <th>Device</th>
-                <th>Problem</th>
-                <th>Status</th>
-            </tr>
-
-            <tr>
-                <td>e-boda Z700 IzzyComm</td>
-                <td>Broken tablet</td>
-                <td class="broken">BROKEN</td>
-            </tr>
-
-            <tr>
-                <td>iPad Air 3</td>
-                <td>Broken display</td>
-                <td class="broken">BROKEN</td>
-            </tr>
-
-            <tr>
-                <td>Huawei Mate 20 Lite</td>
-                <td>Missing screen / battery</td>
-                <td class="broken">PARTS</td>
-            </tr>
-
-            <tr>
-                <td>Redmi Note 10 Pro</td>
-                <td>Hardware / display situation</td>
-                <td class="testing">TESTING</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- FLEA MARKET -->
-
-    <div class="box" id="flea">
-        <h2>Flea Market Archaeology</h2>
-
-        <p>
-            The place where perfectly normal people buy groceries
-            while DaryTech acquires another 10 lei iPhone.
-        </p>
-
-        <table>
-            <tr>
-                <th>Date</th>
-                <th>Find</th>
-                <th>Price</th>
-            </tr>
-
-            <tr>
-                <td>2026-09-25</td>
-                <td>iPhone 4</td>
-                <td>10 lei</td>
-            </tr>
-
-            <tr>
-                <td>2026-09-25</td>
-                <td>iPhone 4S</td>
-                <td>10 lei</td>
-            </tr>
-
-            <tr>
-                <td>2026-09-25</td>
-                <td>iPad Air 3</td>
-                <td>20 lei</td>
-            </tr>
-        </table>
-
-        <p class="status">
-            Flea-market status: ALWAYS LOOKING
-        </p>
-    </div>
-
-    <!-- TERMINAL -->
-
-    <div class="box" id="terminal">
-        <h2>DaryTech Terminal</h2>
-
-        <div class="terminal" id="terminalOutput">
-            DaryTech Terminal v1.0<br>
-            Type "help" for commands.<br><br>
-
-            darytech@lab:~$
-            <input
-                id="terminalInput"
-                type="text"
-                autocomplete="off"
-                onkeydown="terminalCommand(event)"
-            >
-        </div>
-    </div>
-
-    <!-- TIMELINE -->
-
-    <div class="box" id="timeline">
-        <h2>Tech Timeline</h2>
-
+      <section id="timeline" style="margin-top:35px">
+        <h2>📅 Workshop timeline</h2>
         <div class="timeline">
-
-            <div class="timeline-item">
-                <div class="year">2023</div>
-                <p>
-                    Started getting deeper into technology and
-                    old/Android hardware.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="year">2024</div>
-                <p>
-                    More Android experimentation, old devices,
-                    Linux and hardware projects.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="year">2025</div>
-                <p>
-                    New Redmi Note 14 5G and the beginning of
-                    more serious Android/device experimentation.
-                </p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="year">2026</div>
-                <p>
-                    RokrOS, ESP32 projects, custom ROMs,
-                    flea-market archaeology and DaryTech.
-                </p>
-            </div>
-
+          <div class="timeline-item">
+            <h3>Dell Latitude E6330 revived</h3>
+            <p class="muted">Linux Mint daily machine · CPU repasted · temperatures improved.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>DaryCentre retired</h3>
+            <p class="muted">The Lenovo remains preserved in case the project returns someday.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>HP Compaq repair postponed</h3>
+            <p class="muted">The dc7900 is disassembled and waiting for a future repair attempt.</p>
+          </div>
         </div>
+      </section>
+
+      <section id="about" style="margin-top:35px">
+        <h2>ℹ️ About DaryTech</h2>
+        <div class="card">
+          <p>DaryTech is a personal technology project focused on computer repairs, old hardware, Linux, embedded electronics, and experimentation.</p>
+          <p><b>Motto:</b> Free tech doesn't go to waste.</p>
+          <p><a class="aero-button" href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">Visit DaryTech on YouTube ↗</a></p>
+          <p><a href="https://github.com/darycodey" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></p>
+        </div>
+      </section>
+
+      <footer>© <span id="year"></span> DaryTech · Built with HTML, CSS & JavaScript</footer>
     </div>
-
-    <!-- FORUM -->
-
-    <div class="box" id="forum">
-        <h2>DaryTech Forum</h2>
-
-        <p>
-            Local demo forum. Posts are saved in this browser.
-        </p>
-
-        <input
-            type="text"
-            id="forumName"
-            placeholder="Your name"
-        >
-
-        <input
-            type="text"
-            id="forumTopic"
-            placeholder="Topic"
-        >
-
-        <textarea
-            id="forumMessage"
-            rows="5"
-            placeholder="Write something..."
-        ></textarea>
-
-        <button onclick="createPost()">Post</button>
-
-        <div id="forumPosts"></div>
-    </div>
-
-    <!-- ABOUT -->
-
-    <div class="box" id="about">
-        <h2>About DaryTech</h2>
-
-        <p>
-            DaryTech is a personal technology archive exploring
-            Android, Linux, retro hardware, microcontrollers,
-            DIY computing, repairs and flea-market finds.
-        </p>
-
-        <p>
-            Built with plain HTML, CSS and JavaScript.
-            No framework. No tracking. No nonsense.
-        </p>
-
-        <p>
-            Designed to work on modern devices and older hardware.
-        </p>
-    </div>
-
+  </main>
 </div>
 
-<div class="footer">
-    DaryTech &copy; 2026
-    <br>
-    Powered by GitHub Pages
+<div class="start-menu" id="startMenu">
+  <div class="start-head">
+    <strong>🖥️ DaryTech</strong>
+    <div class="muted">Technology workshop</div>
+  </div>
+  <div class="start-links">
+    <a href="#home">🌐 Welcome</a>
+    <a href="#projects">🛠️ Projects</a>
+    <a href="#devices">💾 Hardware inventory</a>
+    <a href="#terminal">⌨️ Terminal</a>
+    <a href="#timeline">📅 Timeline</a>
+    <a href="#about">ℹ️ About</a>
+    <a href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
+    <a href="https://github.com/darycodey" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+  </div>
+  <div class="start-foot">Free tech doesn't go to waste.</div>
+</div>
+
+<div class="taskbar">
+  <button class="start-button" id="startButton" aria-label="Open Start menu" aria-expanded="false">⊞</button>
+  <a class="task-app" href="#home">🖥️ DaryTech</a>
+  <a class="task-app" href="#devices">💾 Devices</a>
+  <a class="task-app" href="#terminal">⌨️ Terminal</a>
+  <div class="clock"><div id="clockTime">--:--</div><div id="clockDate">----</div></div>
 </div>
 
 <script>
+const startButton = document.getElementById("startButton");
+const startMenu = document.getElementById("startMenu");
 
-/* =========================
-   DARYTECH TERMINAL
-   ========================= */
+startButton.addEventListener("click", () => {
+  const open = startMenu.classList.toggle("open");
+  startButton.setAttribute("aria-expanded", String(open));
+});
 
-function terminalCommand(event) {
+document.addEventListener("click", event => {
+  if (!startMenu.contains(event.target) && !startButton.contains(event.target)) {
+    startMenu.classList.remove("open");
+    startButton.setAttribute("aria-expanded", "false");
+  }
+});
 
-    if (event.key !== "Enter") {
-        return;
-    }
+startMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    startMenu.classList.remove("open");
+    startButton.setAttribute("aria-expanded", "false");
+  });
+});
 
-    const input = document.getElementById("terminalInput");
-    const output = document.getElementById("terminalOutput");
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clockTime").textContent =
+    now.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+  document.getElementById("clockDate").textContent =
+    now.toLocaleDateString([], {day: "2-digit", month: "2-digit", year: "numeric"});
+}
+updateClock();
+setInterval(updateClock, 1000);
+document.getElementById("year").textContent = new Date().getFullYear();
 
-    const command = input.value.trim().toLowerCase();
+const deviceSearch = document.getElementById("deviceSearch");
+deviceSearch.addEventListener("input", () => {
+  const query = deviceSearch.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll(".device").forEach(card => {
+    const match = card.textContent.toLowerCase().includes(query);
+    card.classList.toggle("hidden", !match);
+    if (match) visible++;
+  });
+  document.getElementById("noResults").classList.toggle("hidden", visible > 0);
+});
 
-    let response = "";
+const terminalForm = document.getElementById("terminalForm");
+const terminalInput = document.getElementById("terminalInput");
+const terminalOutput = document.getElementById("terminalOutput");
 
-    if (command === "help") {
-
-        response =
-            "Available commands:<br>" +
-            "help<br>" +
-            "devices<br>" +
-            "projects<br>" +
-            "status<
+const commands = {
+  help: "Available commands:\nhelp       Show commands\nabout      About DaryTech\nstatus     Show workshop status\nlaptops    List computers\nphones     List phones and tablets\nprojects   List projects\nmotto      Show the DaryTech motto\nclear      Clear terminal\nwhoami     Who is using this terminal",
+  about: "DaryTech — a personal technology and old-hardware revival project.",
+  status: "Dell E6330: Main laptop, Linux Mint 22.3\nDaryCentre: Retired and preserved\nHP dc7900: Disassembled, repair postponed\niPhone 6s: Bypassed, Wi-Fi use",
+  laptops: "Dell Latitude E6330 — i5-3320M, 8 GB DDR3, 120 GB SSD\nLenovo ThinkCentre M57e (DaryCentre) — E8400, 3 GB DDR2, GT 730\nHP Co
