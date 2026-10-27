@@ -4,560 +4,945 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123b62">
-<title>DaryTech — Welcome</title>
+<meta name="theme-color" content="#246b9e">
+<meta name="description" content="DaryTech — technology, retro computers, hardware projects, RokrOS and DIY experiments.">
+<title>DaryTech — Technology Reborn</title>
+
 <style>
 :root {
-  --glass: rgba(215, 238, 255, .17);
-  --line: rgba(255,255,255,.55);
-  --text: #fff;
-  --blue: #0875bb;
+  --glass: rgba(240, 249, 255, .84);
+  --glass-light: rgba(255, 255, 255, .72);
+  --blue: #176da8;
+  --blue-dark: #164b75;
+  --text: #18344a;
+  --muted: #587185;
+  --border: #ffffffbd;
+  --shadow: 0 12px 32px #052a4b42;
+  --green: #218447;
 }
 * { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 20px; }
 body {
   margin: 0;
-  min-height: 100vh;
   color: var(--text);
-  font: 14px "Segoe UI", Tahoma, sans-serif;
+  font: 15px/1.6 "Segoe UI", Tahoma, sans-serif;
   background:
-    radial-gradient(ellipse at 20% 20%, #56b4dd 0, transparent 35%),
-    radial-gradient(ellipse at 80% 10%, #2178b8 0, transparent 35%),
-    linear-gradient(145deg, #163e78, #1d8cae 50%, #092b59);
+    radial-gradient(ellipse at 20% 20%, #bdeeff 0, transparent 45%),
+    radial-gradient(ellipse at 80% 35%, #75b9e9 0, transparent 45%),
+    linear-gradient(140deg, #1c5585, #8bd5f3 55%, #265a91);
   background-attachment: fixed;
+  padding-bottom: 65px;
 }
+a { color: #075e9b; }
 button, input { font: inherit; }
 button { cursor: pointer; }
-a { color: #bceaff; }
-a:hover { color: white; }
-.desktop { min-height: 100vh; padding: 20px 20px 85px; }
 .desktop-icons {
+  position: fixed;
+  top: 12px;
+  left: 8px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 90px);
-  gap: 14px;
-  align-content: start;
-  width: 100%;
+  gap: 8px;
+  z-index: 10;
 }
 .desktop-icon {
+  width: 76px;
+  padding: 8px 3px;
   color: white;
   text-align: center;
-  padding: 10px 4px;
+  text-shadow: 1px 2px 3px #102b40;
+  font-size: 12px;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  text-shadow: 1px 2px 3px #00152b;
 }
 .desktop-icon:hover {
-  background: rgba(150,220,255,.2);
-  border-color: rgba(255,255,255,.45);
+  background: #ffffff35;
+  border-color: #ffffff88;
 }
-.desktop-icon .emoji { display: block; font-size: 34px; margin-bottom: 7px; }
+.desktop-icon span {
+  display: block;
+  font-size: 29px;
+  line-height: 1.5;
+}
+main {
+  width: min(1050px, calc(100% - 34px));
+  margin: 20px auto 0;
+}
 .window {
-  width: min(900px, 100%);
-  margin: 15px auto 35px;
-  border: 1px solid var(--line);
-  border-radius: 8px 8px 5px 5px;
+  margin-bottom: 22px;
   overflow: hidden;
-  background: rgba(12,37,65,.83);
-  box-shadow: 0 15px 45px rgba(0,0,0,.4), inset 0 1px #fff;
-  backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--glass);
+  backdrop-filter: blur(17px);
+  box-shadow: var(--shadow), inset 0 1px #fff;
 }
 .titlebar {
-  min-height: 45px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 7px 12px;
-  background: linear-gradient(#e8f7ffdd, #6aa6d6aa 48%, #22598bc9);
-  color: #071e36;
-  text-shadow: 0 1px white;
-  border-bottom: 1px solid #ffffff88;
-}
-.titlebar strong { font-size: 15px; }
-.window-controls { display: flex; gap: 5px; }
-.winbtn {
-  width: 28px;
-  height: 24px;
-  border: 1px solid #ffffffaa;
-  border-radius: 4px;
-  color: white;
-  background: linear-gradient(#86c7f1, #14548a);
-  text-shadow: 0 1px #123;
-}
-.winbtn.close { background: linear-gradient(#ffb4a5, #bb271e); }
-.toolbar {
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  background: rgba(225,244,255,.10);
-  border-bottom: 1px solid #ffffff25;
+  gap: 12px;
+  padding: 10px 15px;
+  background: linear-gradient(#ffffffdc, #b7d9eead);
+  border-bottom: 1px solid #9abbd2;
 }
-.toolbar a { text-decoration: none; }
-.content { padding: 20px; }
-h1, h2, h3 { margin-top: 0; }
-h1 { font-size: clamp(26px, 5vw, 42px); }
-h2 { font-size: 23px; }
-h3 { margin-bottom: 8px; }
-p { line-height: 1.6; }
+.titlebar strong { font-weight: 600; }
+.window-controls { display: flex; gap: 4px; }
+.window-controls span {
+  width: 23px;
+  height: 19px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #91aabd;
+  border-radius: 3px;
+  background: linear-gradient(white, #b9d1e1);
+  font-size: 11px;
+}
+.content { padding: 24px; }
+h1, h2, h3 { line-height: 1.25; }
+h1 { font-size: clamp(34px, 6vw, 55px); margin: 0 0 12px; }
+h2 { font-size: 26px; margin: 0 0 14px; }
+h3 { font-size: 18px; margin: 0 0 8px; }
+p { margin: 8px 0 13px; }
+.muted { color: var(--muted); }
 .hero {
-  padding: 25px 10px 35px;
-  text-align: center;
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at 90% 10%, #ffffff88, transparent 40%),
+    linear-gradient(135deg, #eaf8ffed, #b7def4db);
 }
-.hero .logo { font-size: 54px; filter: drop-shadow(0 4px 4px #001b37); }
-.hero p { max-width: 650px; margin: 12px auto; color: #e1f4ff; }
-.actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-.aero-button {
+.hero-tag {
   display: inline-block;
-  padding: 10px 16px;
+  width: fit-content;
+  border: 1px solid #a5cee6;
+  border-radius: 20px;
+  padding: 4px 11px;
+  background: #ffffff96;
+  color: #15547f;
+  font-size: 12px;
+  font-weight: 600;
+}
+.hero h1 span { color: var(--blue); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.btn {
+  display: inline-block;
+  padding: 9px 15px;
   color: white;
   text-decoration: none;
-  border: 1px solid #b5e6ff;
+  border: 1px solid #0b5489;
   border-radius: 5px;
-  background: linear-gradient(#8bd5f7, #1874b4 48%, #084578);
-  box-shadow: inset 0 1px #ffffffa8, 0 2px 5px #00162c88;
+  background: linear-gradient(#4babe4, #12649f);
+  box-shadow: inset 0 1px #ffffff88, 0 2px 3px #123e5b22;
 }
-.aero-button:hover { filter: brightness(1.15); }
+.btn:hover { filter: brightness(1.08); }
+.btn.secondary {
+  color: #174c70;
+  background: linear-gradient(#fff, #d7eaf6);
+  border-color: #9bbdd2;
+}
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 9px 12px;
+  background: #ffffff9c;
+  border-bottom: 1px solid #b4d0e1;
+}
+.navbar a {
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.navbar a:hover { background: #c8e7f8; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 235px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
 .card {
-  padding: 16px;
-  border: 1px solid #ffffff3d;
-  border-radius: 5px;
-  background: linear-gradient(145deg, #ffffff17, #061e3c55);
-  box-shadow: inset 0 1px #ffffff12;
-}
-.card p { color: #d8eaff; margin-bottom: 8px; }
-.card .icon { font-size: 28px; }
-.status {
-  display: inline-block;
-  padding: 4px 8px;
-  margin: 4px 0 8px;
-  border-radius: 3px;
-  background: #ffffff18;
-  border: 1px solid #ffffff38;
-  font-size: 12px;
-}
-.status.active { background: #187d55aa; }
-.status.retired { background: #8c6b20aa; }
-.status.repair { background: #9d453faa; }
-.muted { color: #bcd4e9; }
-.search {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  color: white;
-  border: 1px solid #b8e3ff88;
-  border-radius: 4px;
-  background: #061d38aa;
-  outline: none;
-}
-.search::placeholder { color: #bed4e9; }
-.terminal {
-  padding: 15px;
-  background: #06100b;
-  border: 1px solid #4a8b60;
-  border-radius: 4px;
-  font: 13px/1.6 Consolas, monospace;
-}
-.terminal-output {
-  min-height: 110px;
-  max-height: 260px;
-  overflow: auto;
-  white-space: pre-wrap;
-  color: #8bffa7;
-}
-.terminal form { display: flex; gap: 8px; }
-.terminal label { color: #8bffa7; }
-.terminal input {
-  flex: 1;
+  padding: 17px;
+  border: 1px solid #b7d2e3;
+  border-radius: 7px;
+  background: #ffffffa3;
+  box-shadow: inset 0 1px #fff;
   min-width: 0;
-  color: #8bffa7;
-  border: none;
-  outline: none;
-  background: transparent;
-  font-family: Consolas, monospace;
 }
-.timeline { border-left: 2px solid #8ed9ff; padding-left: 18px; }
-.timeline-item { position: relative; margin: 18px 0; }
+.card p:last-child { margin-bottom: 0; }
+.card-icon { font-size: 30px; margin-bottom: 7px; }
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #b9d7bf;
+  border-radius: 20px;
+  padding: 4px 11px;
+  color: #205f34;
+  background: #e7f8e9;
+  font-size: 12px;
+  font-weight: 700;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e4a027;
+  box-shadow: 0 0 0 3px #f7e7c3;
+}
+.status.available { color: #205f34; background: #e7f8e9; }
+.status.available .status-dot { background: #2eaa55; box-shadow: 0 0 0 3px #c5ebcf; }
+.rokros-panel {
+  color: #e1edf7;
+  background:
+    radial-gradient(ellipse at top right, #164f64 0, transparent 50%),
+    linear-gradient(140deg, #101a27, #172b3d);
+  border-color: #6c9caf;
+}
+.rokros-panel .titlebar {
+  color: #e9f8ff;
+  background: linear-gradient(#28485b, #162b3b);
+  border-bottom-color: #45677b;
+}
+.rokros-panel .content { background: #07131b25; }
+.rokros-panel .card {
+  color: #e1edf7;
+  background: #ffffff09;
+  border-color: #426176;
+}
+.rokros-panel .muted { color: #adc5d5; }
+.rokros-panel a { color: #7cd7ff; }
+.rokros-panel .status {
+  color: #ffe0a2;
+  background: #503b16;
+  border-color: #96723a;
+}
+.rokros-panel .status-dot {
+  background: #ffba43;
+  box-shadow: 0 0 0 3px #795822;
+}
+.code {
+  overflow-x: auto;
+  padding: 14px;
+  border: 1px solid #36576d;
+  border-radius: 6px;
+  color: #a9e5b6;
+  background: #071019;
+  font: 13px/1.6 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+.searchbox {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #a7c4d7;
+  border-radius: 5px;
+  background: #ffffffd9;
+  color: var(--text);
+  outline-color: #3289c0;
+  margin: 5px 0 15px;
+}
+.hardware-card[hidden] { display: none; }
+.pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 15px;
+  color: #18527b;
+  background: #d9eefb;
+  font-size: 11px;
+  margin: 2px 2px 2px 0;
+}
+.timeline {
+  border-left: 3px solid #70a8cf;
+  padding-left: 18px;
+  margin-left: 5px;
+}
+.timeline-item { position: relative; padding: 0 0 18px; }
 .timeline-item::before {
   content: "";
   position: absolute;
-  left: -24px;
-  top: 4px;
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid white;
   border-radius: 50%;
-  background: #b8edff;
-  box-shadow: 0 0 8px #7ed9ff;
+  background: #247cb3;
+  left: -25px;
+  top: 5px;
 }
-footer { text-align: center; padding: 20px; color: #cce5f7; }
+.terminal {
+  padding: 17px;
+  color: #b9f5b2;
+  background: #09120c;
+  border: 1px solid #42654a;
+  border-radius: 6px;
+  font: 13px/1.6 ui-monospace, Consolas, monospace;
+}
+.terminal-output {
+  min-height: 70px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.terminal-form { display: flex; gap: 7px; align-items: center; }
+.terminal-form label { white-space: nowrap; }
+.terminal-form input {
+  flex: 1;
+  min-width: 0;
+  color: #b9f5b2;
+  background: transparent;
+  border: none;
+  outline: none;
+  caret-color: #b9f5b2;
+}
+.terminal button {
+  padding: 4px 9px;
+  color: #b9f5b2;
+  background: #19301d;
+  border: 1px solid #42654a;
+  border-radius: 4px;
+}
+footer { text-align: center; color: white; text-shadow: 1px 2px 3px #102b40; padding: 12px; font-size: 13px; }
 .taskbar {
   position: fixed;
-  z-index: 50;
-  bottom: 0; left: 0; right: 0;
-  min-height: 49px;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 45px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   padding: 5px 10px;
-  background: linear-gradient(#9edbfae8, #246fa7ee 48%, #0b355feF);
-  border-top: 1px solid #d6f4ff;
-  box-shadow: 0 -4px 18px #00162c66;
-  backdrop-filter: blur(15px);
+  color: white;
+  background: linear-gradient(#2d719cdb, #0c3457ee);
+  border-top: 1px solid #b9e6ff;
+  box-shadow: 0 -3px 12px #092c4840;
+  backdrop-filter: blur(12px);
 }
 .start-button {
-  flex-shrink: 0;
-  width: 43px; height: 39px;
-  border-radius: 50%;
-  border: 2px solid #b9ecff;
-  background: radial-gradient(circle at 30% 25%, #e8fffc, #41c5ff 35%, #0870ba 68%, #05396d);
-  box-shadow: 0 0 9px #9beaff, inset 0 1px white;
-  font-size: 22px;
+  border: 1px solid #b7e9ff;
+  border-radius: 20px;
+  width: 35px;
+  height: 35px;
+  background: radial-gradient(circle at 30% 20%, #a6f4ff, #1682b9 55%, #07446f);
   color: white;
-  text-shadow: 0 1px 4px #00365c;
+  font-size: 19px;
+  box-shadow: inset 0 1px #ffffffc9, 0 1px 5px #061d30;
 }
-.task-app {
-  min-width: 0;
-  max-width: 180px;
-  padding: 9px 13px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: white;
-  border: 1px solid #ffffff42;
-  border-radius: 3px;
-  background: #d9f2ff22;
-  text-decoration: none;
-}
-.task-app:hover { background: #d9f2ff55; }
-.clock {
-  margin-left: auto;
-  text-align: center;
-  min-width: 75px;
-  font-size: 12px;
-  text-shadow: 0 1px 3px #00152b;
-}
+.task-label { font-size: 12px; }
+.task-clock { margin-left: auto; text-align: right; font-size: 12px; line-height: 1.35; }
 .start-menu {
   display: none;
   position: fixed;
-  z-index: 60;
-  left: 10px;
-  bottom: 55px;
-  width: min(380px, calc(100vw - 20px));
-  color: white;
-  border: 1px solid #d3efff;
-  border-radius: 7px;
-  background: linear-gradient(120deg, #133d69f5, #061d3cf7);
-  box-shadow: 0 0 25px #00172caa, inset 0 1px #ffffff55;
-  overflow: hidden;
+  z-index: 30;
+  bottom: 52px;
+  left: 8px;
+  width: min(310px, calc(100vw - 16px));
+  padding: 13px;
+  border: 1px solid #d8efff;
+  border-radius: 9px;
+  background: linear-gradient(#eaf7ffef, #b4d5ebf5);
+  box-shadow: 0 8px 28px #08294375;
+  backdrop-filter: blur(18px);
 }
 .start-menu.open { display: block; }
-.start-head { padding: 18px; background: #ffffff13; }
-.start-head strong { font-size: 20px; }
-.start-links { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 10px; }
-.start-links a {
-  padding: 12px 8px;
-  border-radius: 3px;
-  color: white;
+.start-menu a {
+  display: block;
+  padding: 9px;
+  color: #153c59;
   text-decoration: none;
+  border-radius: 5px;
 }
-.start-links a:hover { background: #ffffff20; }
-.start-foot { padding: 10px 14px; background: #ffffff12; font-size: 12px; }
-.hidden { display: none !important; }
-@media (max-width: 540px) {
-  .desktop { padding: 10px 8px 75px; }
-  .desktop-icons { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; }
-  .window { margin-top: 10px; }
-  .content { padding: 14px; }
-  .task-app { display: none; }
+.start-menu a:hover { background: #ffffffb5; }
+#toast {
+  position: fixed;
+  z-index: 40;
+  right: 15px;
+  bottom: 60px;
+  max-width: 310px;
+  padding: 12px 15px;
+  color: #14344b;
+  background: #effaffef;
+  border: 1px solid white;
+  border-radius: 7px;
+  box-shadow: var(--shadow);
+  display: none;
+}
+#toast.show { display: block; }
+@media (max-width: 700px) {
+  .desktop-icons { position: static; display: flex; padding: 8px; }
+  .desktop-icon { width: 65px; }
+  main { width: calc(100% - 18px); margin-top: 5px; }
+  .content { padding: 17px; }
+  .hero { min-height: 280px; }
+  .task-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 </style>
 </head>
-<body>
-<div class="desktop">
-  <div class="desktop-icons">
-    <a class="desktop-icon" href="#home"><span class="emoji">🌐</span>Internet</a>
-    <a class="desktop-icon" href="#projects"><span class="emoji">🛠️</span>Projects</a>
-    <a class="desktop-icon" href="#devices"><span class="emoji">💻</span>My Devices</a>
-    <a class="desktop-icon" href="#terminal"><span class="emoji">⌨️</span>Terminal</a>
-    <a class="desktop-icon" href="#about"><span class="emoji">ℹ️</span>About DaryTech</a>
-  </div>
 
-  <main class="window" id="home">
-    <header class="titlebar">
-      <strong>🪟 DaryTech — Welcome Center</strong>
-      <div class="window-controls">
-        <button class="winbtn" title="Minimize" onclick="document.querySelector('.window').scrollIntoView({behavior:'smooth'})">−</button>
-        <button class="winbtn" title="Maximize" onclick="document.querySelector('.window').classList.toggle('maximized')">□</button>
-        <button class="winbtn close" title="Close" onclick="document.querySelector('.content').scrollIntoView({behavior:'smooth'})">×</button>
-      </div>
-    </header>
-    <nav class="toolbar">
-      <a href="#home">Home</a><span>›</span>
-      <a href="#projects">Projects</a><span>›</span>
-      <a href="#devices">Hardware inventory</a><span>›</span>
+<body>
+
+<div class="desktop-icons" aria-label="Desktop shortcuts">
+  <div class="desktop-icon" onclick="goTo('home')"><span>🏠</span>Home</div>
+  <div class="desktop-icon" onclick="goTo('projects')"><span>🛠️</span>Projects</div>
+  <div class="desktop-icon" onclick="goTo('hardware')"><span>💻</span>Hardware</div>
+  <div class="desktop-icon" onclick="goTo('terminal')"><span>⌨️</span>Terminal</div>
+</div>
+
+<main>
+  <header class="window" id="home">
+    <div class="titlebar">
+      <strong>🖥️ DaryTech — Welcome Center</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+
+    <nav class="navbar" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#rokros">RokrOS Linux</a>
+      <a href="#hardware">Hardware</a>
+      <a href="#workshop">Workshop</a>
+      <a href="#terminal">Terminal</a>
       <a href="#about">About</a>
     </nav>
 
-    <div class="content">
-      <section class="hero">
-        <div class="logo">🖥️</div>
-        <h1>Welcome to DaryTech</h1>
-        <p>Old hardware. New life. Linux, repairs, custom tech projects, and experiments from the DaryTech workshop.</p>
-        <div class="actions">
-          <a class="aero-button" href="#devices">Explore my hardware</a>
-          <a class="aero-button" href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">▶ YouTube channel</a>
-        </div>
-      </section>
-
-      <section id="projects">
-        <h2>🛠️ Projects</h2>
-        <div class="grid">
-          <article class="card">
-            <div class="icon">🌡️</div>
-            <h3>DaryTech HUD</h3>
-            <span class="status active">In use</span>
-            <p>A Linux desktop temperature and fan dashboard made with Python and GTK.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🔌</div>
-            <h3>RokrOS</h3>
-            <span class="status">Development project</span>
-            <p>An ESP32-S3 project targeting the N16R8 board, with 16 MB flash and 8 MB PSRAM.</p>
-          </article>
-          <article class="card">
-            <div class="icon">📡</div>
-            <h3>RokrNAS</h3>
-            <span class="status">Development project</span>
-            <p>An ESP8266-based project experimenting with an OLED display and access point features.</p>
-          </article>
-          <article class="card">
-            <div class="icon">♻️</div>
-            <h3>Old hardware revival</h3>
-            <span class="status active">DaryTech spirit</span>
-            <p>Repairing, reusing, and experimenting with older computers instead of wasting useful tech.</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="devices" style="margin-top:35px">
-        <h2>💾 Hardware inventory</h2>
-        <p class="muted">Known devices and their current project status.</p>
-        <input class="search" id="deviceSearch" type="search" placeholder="Search devices, specs, or status…" aria-label="Search hardware inventory">
-        <div class="grid" id="deviceGrid" style="margin-top:15px">
-          <article class="card device">
-            <div class="icon">💻</div>
-            <h3>Dell Latitude E6330</h3>
-            <span class="status active">Main laptop</span>
-            <p><b>CPU:</b> Intel Core i5-3320M</p>
-            <p><b>RAM:</b> 8 GB DDR3</p>
-            <p><b>Storage:</b> 120 GB SATA SSD</p>
-            <p><b>OS:</b> Linux Mint 22.3</p>
-            <p>Repasted and revived. Battery needs replacement.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">📱</div>
-            <h3>iPhone 6s</h3>
-            <span class="status">Bypassed · Wi-Fi use</span>
-            <p><b>Storage:</b> 32 GB</p>
-            <p><b>iOS:</b> 15.8.7</p>
-            <p><b>Battery health:</b> 77% (last reported)</p>
-            <p>Touch ID unavailable. Used as a Wi-Fi device.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">🖥️</div>
-            <h3>Lenovo ThinkCentre M57e</h3>
-            <span class="status retired">DaryCentre · Retired</span>
-            <p><b>CPU:</b> Core 2 Duo E8400 @ 3.0 GHz</p>
-            <p><b>RAM:</b> 3 GB DDR2</p>
-            <p><b>GPU:</b> NVIDIA GeForce GT 730</p>
-            <p><b>Storage:</b> 500 GB HDD</p>
-            <p><b>OS:</b> Windows 7 Professional</p>
-            <p>Retired, intact, switched off, and preserved for a possible future comeback.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">🧰</div>
-            <h3>HP Compaq dc7900 SFF</h3>
-            <span class="status repair">Disassembled · Not POSTing</span>
-            <p><b>Model:</b> FU035ET#ABH</p>
-            <p><b>Storage:</b> Kingston 120 GB SSD</p>
-            <p>Currently disassembled; no image or POST. Repair postponed until later.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">📱</div>
-            <h3>Redmi Note 14 5G</h3>
-            <span class="status active">Daily phone</span>
-            <p><b>CPU:</b> MediaTek Dimensity 7025 Ultra</p>
-            <p><b>RAM / storage:</b> 8 GB / 256 GB</p>
-            <p><b>Display:</b> 120 Hz</p>
-            <p>HyperOS / Android 16, as last reported.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">📱</div>
-            <h3>Redmi 12 5G</h3>
-            <span class="status">Custom ROM experiments</span>
-            <p><b>CPU:</b> Snapdragon 4 Gen 2</p>
-            <p><b>RAM:</b> 4 GB</p>
-            <p><b>Display:</b> 90 Hz</p>
-            <p>Used for Android custom ROM experimentation.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">🍎</div>
-            <h3>iPad 2</h3>
-            <span class="status">Older Apple device</span>
-            <p><b>Model:</b> A1396</p>
-            <p><b>iOS:</b> 9.3.5 / 9.3.6</p>
-            <p>Possible live-view display project. Speaker has an issue.</p>
-          </article>
-
-          <article class="card device">
-            <div class="icon">🔧</div>
-            <h3>ESP32-S3 N16R8</h3>
-            <span class="status">RokrOS target board</span>
-            <p><b>Flash:</b> 16 MB</p>
-            <p><b>PSRAM:</b> 8 MB</p>
-            <p>Target board for the RokrOS embedded project.</p>
-          </article>
-        </div>
-        <p id="noResults" class="hidden">No matching devices found.</p>
-      </section>
-
-      <section id="terminal" style="margin-top:35px">
-        <h2>⌨️ DaryTech Terminal</h2>
-        <p class="muted">A simulated browser terminal — commands here do not execute on your computer.</p>
-        <div class="terminal">
-          <div id="terminalOutput" class="terminal-output">DaryTech Terminal [Version 1.0]
-Type 'help' to see available commands.
-</div>
-          <form id="terminalForm">
-            <label for="terminalInput">C:\DARYTECH&gt;</label>
-            <input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command">
-          </form>
-        </div>
-      </section>
-
-      <section id="timeline" style="margin-top:35px">
-        <h2>📅 Workshop timeline</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <h3>Dell Latitude E6330 revived</h3>
-            <p class="muted">Linux Mint daily machine · CPU repasted · temperatures improved.</p>
-          </div>
-          <div class="timeline-item">
-            <h3>DaryCentre retired</h3>
-            <p class="muted">The Lenovo remains preserved in case the project returns someday.</p>
-          </div>
-          <div class="timeline-item">
-            <h3>HP Compaq repair postponed</h3>
-            <p class="muted">The dc7900 is disassembled and waiting for a future repair attempt.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" style="margin-top:35px">
-        <h2>ℹ️ About DaryTech</h2>
-        <div class="card">
-          <p>DaryTech is a personal technology project focused on computer repairs, old hardware, Linux, embedded electronics, and experimentation.</p>
-          <p><b>Motto:</b> Free tech doesn't go to waste.</p>
-          <p><a class="aero-button" href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">Visit DaryTech on YouTube ↗</a></p>
-          <p><a href="https://github.com/darycodey" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a></p>
-        </div>
-      </section>
-
-      <footer>© <span id="year"></span> DaryTech · Built with HTML, CSS & JavaScript</footer>
+    <div class="content hero">
+      <span class="hero-tag">INDEPENDENT TECH PROJECTS</span>
+      <h1>Welcome to <span>DaryTech</span></h1>
+      <p>
+        Reviving old hardware, experimenting with operating systems,
+        building electronics, and giving forgotten technology another life.
+      </p>
+      <p class="muted">Free tech doesn't go to waste.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#projects">Explore projects</a>
+        <a class="btn secondary" href="#hardware">My collection</a>
+      </div>
     </div>
-  </main>
-</div>
+  </header>
+
+  <section class="window" id="projects">
+    <div class="titlebar">
+      <strong>🛠️ Project Explorer</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+    <div class="content">
+      <h2>Projects and experiments</h2>
+      <p class="muted">A collection of software, electronics, and hardware projects.</p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">🐧</div>
+          <h3>RokrOS Linux</h3>
+          <span class="status"><span class="status-dot"></span>In development</span>
+          <p>
+            A custom Linux distribution experiment aimed at bringing a
+            personalized Linux experience to older computers.
+          </p>
+          <p><strong>Public release:</strong> Not released to the public.</p>
+          <a href="#rokros">View development information →</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🔌</div>
+          <h3>RokrOS for ESP32</h3>
+          <span class="status available"><span class="status-dot"></span>Electronics project</span>
+          <p>
+            The separate ESP32-based RokrOS project. Experiments with
+            embedded systems and custom device interfaces.
+          </p>
+          <p><span class="pill">ESP32-S3</span><span class="pill">16 MB Flash</span><span class="pill">8 MB PSRAM</span></p>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📟</div>
+          <h3>ESP32-S3 Dashboard</h3>
+          <p>
+            A custom embedded dashboard built around the ESP32-S3 N16R8,
+            with hardware experiments and status displays.
+          </p>
+          <span class="pill">Arduino IDE</span><span class="pill">Embedded</span>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📡</div>
+          <h3>RokrNAS</h3>
+          <p>
+            An ESP8266-based networking and OLED display experiment,
+            exploring small DIY network tools.
+          </p>
+          <span class="pill">ESP8266</span><span class="pill">OLED</span>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">📱</div>
+          <h3>Android experiments</h3>
+          <p>
+            Custom ROM testing, Android versions, and software experiments
+            on spare Android devices.
+          </p>
+          <span class="pill">Android</span><span class="pill">Custom ROMs</span>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🖥️</div>
+          <h3>Retro PC revival</h3>
+          <p>
+            Restoring older computers, testing Linux, working with legacy
+            BIOS systems, and reusing hardware.
+          </p>
+          <span class="pill">Linux</span><span class="pill">Retro computing</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="window rokros-panel" id="rokros">
+    <div class="titlebar">
+      <strong>🐧 RokrOS Linux — Development Center</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+
+    <div class="content">
+      <span class="status"><span class="status-dot"></span>IN DEVELOPMENT</span>
+      <h2 style="margin-top:16px">RokrOS Linux</h2>
+      <p>
+        A custom Linux operating system currently being developed as part
+        of the DaryTech project.
+      </p>
+      <p>
+        The goal is to create a personalized Linux experience, with a
+        graphical interface and command-line tools, while exploring
+        compatibility with older computers.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <h3>⚙️ Development status</h3>
+          <p>Active experimentation and system customization.</p>
+          <p class="muted">Features and plans may change during development.</p>
+        </article>
+        <article class="card">
+          <h3>💿 Compatibility goals</h3>
+          <p>Exploring support for x86_64 computers and older hardware.</p>
+          <p class="muted">Compatibility is not guaranteed at this stage.</p>
+        </article>
+        <article class="card">
+          <h3>🔒 Public availability</h3>
+          <p><strong>RokrOS Linux has not been released to the public.</strong></p>
+          <p class="muted">There is currently no public release to download.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top:25px">Development roadmap</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>1. Base system</strong>
+          <div class="muted">Experimenting with the Linux base and build environment.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>2. User experience</strong>
+          <div class="muted">Working toward a custom graphical interface and CLI tools.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>3. Hardware testing</strong>
+          <div class="muted">Testing booting and compatibility on target systems.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>4. Future public release</strong>
+          <div class="muted">No public release is available yet. Future availability will depend on development progress.</div>
+        </div>
+      </div>
+
+      <div class="code">
+        <div># RokrOS Linux</div>
+        <div># Status: In development</div>
+        <div># Public release: Not available</div>
+        <div># Project: DaryTech</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="window" id="hardware">
+    <div class="titlebar">
+      <strong>💾 DaryTech Hardware Collection</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+    <div class="content">
+      <h2>Hardware inventory</h2>
+      <p class="muted">Search the collection by device, category, or specifications.</p>
+      <input
+        id="hardwareSearch"
+        class="searchbox"
+        type="search"
+        placeholder="Search hardware… e.g. Dell, iPhone, ESP32"
+        aria-label="Search hardware"
+      >
+
+      <div class="grid" id="hardwareGrid">
+        <article class="card hardware-card" data-search="dell latitude e6330 laptop linux mint intel i5 3320m 8gb ddr3 ssd">
+          <div class="card-icon">💻</div>
+          <h3>Dell Latitude E6330</h3>
+          <p>Main Linux laptop and retro-computing machine.</p>
+          <p><span class="pill">Core i5-3320M</span><span class="pill">8 GB DDR3</span><span class="pill">120 GB SSD</span></p>
+          <p><strong>OS:</strong> Linux Mint 22.3</p>
+        </article>
+
+        <article class="card hardware-card" data-search="lenovo thinkcentre m57e darycentre retired desktop core 2 duo e8400 gt 730 ddr2">
+          <div class="card-icon">🖥️</div>
+          <h3>Lenovo ThinkCentre M57e</h3>
+          <p>DaryCentre — retired retro desktop project.</p>
+          <p><span class="pill">Core 2 Duo E8400</span><span class="pill">GT 730</span><span class="pill">DDR2</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="hp compaq dc7900 sff desktop computer repair project">
+          <div class="card-icon">🧰</div>
+          <h3>HP Compaq dc7900 SFF</h3>
+          <p>A postponed desktop repair and restoration project.</p>
+          <p><span class="pill">Small form factor</span><span class="pill">Repair project</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="redmi note 14 5g smartphone hyperos android 16">
+          <div class="card-icon">📱</div>
+          <h3>Redmi Note 14 5G</h3>
+          <p>Main smartphone for everyday use.</p>
+          <p><span class="pill">8 GB RAM</span><span class="pill">256 GB storage</span><span class="pill">5G</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="redmi 12 5g crdroid android custom rom smartphone">
+          <div class="card-icon">📱</div>
+          <h3>Redmi 12 5G</h3>
+          <p>Android custom ROM testing device.</p>
+          <p><span class="pill">Snapdragon 4 Gen 2</span><span class="pill">crDroid</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="iphone 6s ios 15.8.7 apple smartphone repair">
+          <div class="card-icon">🍎</div>
+          <h3>iPhone 6s</h3>
+          <p>A second-hand iPhone used for repair and software experiments.</p>
+          <p><span class="pill">32 GB</span><span class="pill">iOS 15</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="ipad 2 a1396 ios 9.3.5 apple tablet jailbreak">
+          <div class="card-icon">📲</div>
+          <h3>iPad 2</h3>
+          <p>Legacy iPad used for older iOS software and camera experiments.</p>
+          <p><span class="pill">iOS 9</span><span class="pill">Legacy Apple</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="esp32 s3 n16r8 microcontroller development board 16mb flash 8mb psram">
+          <div class="card-icon">🔌</div>
+          <h3>ESP32-S3 N16R8</h3>
+          <p>Main embedded development board for electronics projects.</p>
+          <p><span class="pill">16 MB Flash</span><span class="pill">8 MB PSRAM</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="esp32 c3 esp8266 iot boards electronics">
+          <div class="card-icon">📡</div>
+          <h3>ESP32-C3 & ESP8266</h3>
+          <p>Small IoT boards for networking and embedded experiments.</p>
+          <p><span class="pill">IoT</span><span class="pill">Wi-Fi</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="raspberry pi 3b plus single board computer">
+          <div class="card-icon">🍓</div>
+          <h3>Raspberry Pi 3B+</h3>
+          <p>Single-board computer for Linux and DIY projects.</p>
+        </article>
+
+        <article class="card hardware-card" data-search="iphone 4 iphone 4s apple legacy collection">
+          <div class="card-icon">📱</div>
+          <h3>iPhone 4 & 4S</h3>
+          <p>Legacy Apple devices in the collection.</p>
+          <p><span class="pill">Retro iOS</span></p>
+        </article>
+
+        <article class="card hardware-card" data-search="asus l8400 old laptop ddr3 memory optiplex 790 motherboard storage controllers tv">
+          <div class="card-icon">📦</div>
+          <h3>Other hardware</h3>
+          <p>Older motherboards, storage drives, memory, displays, controllers, and other electronics.</p>
+          <p><span class="pill">Parts</span><span class="pill">Salvage</span><span class="pill">Repair</span></p>
+        </article>
+      </div>
+      <p id="searchCount" class="muted" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="window" id="workshop">
+    <div class="titlebar">
+      <strong>🔧 Workshop Log</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+    <div class="content">
+      <h2>From old hardware to new projects</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Reviving the Dell Latitude E6330</strong>
+          <div class="muted">Hardware maintenance, thermal improvements, SSD setup, and Linux Mint.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>Building embedded projects</strong>
+          <div class="muted">Experimenting with ESP32-S3, ESP32-C3, ESP8266, and displays.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>RokrOS development</strong>
+          <div class="muted">Working on the ESP32 project and separately experimenting with a custom Linux system.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>Giving old devices another purpose</strong>
+          <div class="muted">Exploring retro computing, repair, custom ROMs, and hardware reuse.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="window" id="terminal">
+    <div class="titlebar">
+      <strong>⌨️ DaryTech Terminal</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+    <div class="content">
+      <p class="muted">A simulated website terminal. Commands run locally in this page.</p>
+      <div class="terminal">
+        <div id="terminalOutput" class="terminal-output">DaryTech Terminal [Version 1.0]
+Type "help" to see available commands.</div>
+        <form class="terminal-form" id="terminalForm">
+          <label for="terminalInput">guest@darytech:~$</label>
+          <input id="terminalInput" autocomplete="off" spellcheck="false" aria-label="Terminal command">
+          <button type="submit">Run</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="window" id="about">
+    <div class="titlebar">
+      <strong>ℹ️ About DaryTech</strong>
+      <div class="window-controls"><span>−</span><span>□</span><span>×</span></div>
+    </div>
+    <div class="content">
+      <h2>Technology deserves another chance.</h2>
+      <p>
+        DaryTech is a personal technology project collection focused on
+        hardware restoration, Linux, embedded electronics, mobile devices,
+        and experimentation.
+      </p>
+      <p>
+        The goal is simple: learn by building, repair what can be repaired,
+        and reuse technology instead of letting it go to waste.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <h3>🌐 Website</h3>
+          <p><a href="https://darycodey.github.io/">darycodey.github.io</a></p>
+        </div>
+        <div class="card">
+          <h3>▶️ YouTube</h3>
+          <p><a href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">@DaryTech-xb</a></p>
+        </div>
+        <div class="card">
+          <h3>🐧 Linux & open source</h3>
+          <p>Learning, customizing, experimenting, and documenting development.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="year"></span> DaryTech · Free tech doesn't go to waste.</footer>
+</main>
 
 <div class="start-menu" id="startMenu">
-  <div class="start-head">
-    <strong>🖥️ DaryTech</strong>
-    <div class="muted">Technology workshop</div>
-  </div>
-  <div class="start-links">
-    <a href="#home">🌐 Welcome</a>
-    <a href="#projects">🛠️ Projects</a>
-    <a href="#devices">💾 Hardware inventory</a>
-    <a href="#terminal">⌨️ Terminal</a>
-    <a href="#timeline">📅 Timeline</a>
-    <a href="#about">ℹ️ About</a>
-    <a href="https://www.youtube.com/@DaryTech-xb" target="_blank" rel="noopener noreferrer">▶ YouTube</a>
-    <a href="https://github.com/darycodey" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
-  </div>
-  <div class="start-foot">Free tech doesn't go to waste.</div>
+  <h3>🪟 DaryTech</h3>
+  <a href="#home" onclick="closeStart()">🏠 Welcome Center</a>
+  <a href="#projects" onclick="closeStart()">🛠️ Project Explorer</a>
+  <a href="#rokros" onclick="closeStart()">🐧 RokrOS Linux — Development</a>
+  <a href="#hardware" onclick="closeStart()">💾 Hardware Collection</a>
+  <a href="#terminal" onclick="closeStart()">⌨️ Terminal</a>
+  <a href="#about" onclick="closeStart()">ℹ️ About DaryTech</a>
 </div>
 
 <div class="taskbar">
-  <button class="start-button" id="startButton" aria-label="Open Start menu" aria-expanded="false">⊞</button>
-  <a class="task-app" href="#home">🖥️ DaryTech</a>
-  <a class="task-app" href="#devices">💾 Devices</a>
-  <a class="task-app" href="#terminal">⌨️ Terminal</a>
-  <div class="clock"><div id="clockTime">--:--</div><div id="clockDate">----</div></div>
+  <button class="start-button" id="startButton" aria-label="Open Start menu" aria-expanded="false">✿</button>
+  <span class="task-label">DaryTech Desktop</span>
+  <span class="task-label">Technology Reborn</span>
+  <div class="task-clock">
+    <div id="clockTime">--:--</div>
+    <div id="clockDate">Loading...</div>
+  </div>
 </div>
 
+<div id="toast" role="status"></div>
+
 <script>
-const startButton = document.getElementById("startButton");
-const startMenu = document.getElementById("startMenu");
+"use strict";
 
-startButton.addEventListener("click", () => {
-  const open = startMenu.classList.toggle("open");
-  startButton.setAttribute("aria-expanded", String(open));
+const $ = (selector) => document.querySelector(selector);
+
+function goTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
+function closeStart() {
+  $("#startMenu").classList.remove("open");
+  $("#startButton").setAttribute("aria-expanded", "false");
+}
+
+$("#startButton").addEventListener("click", () => {
+  const menu = $("#startMenu");
+  const isOpen = menu.classList.toggle("open");
+  $("#startButton").setAttribute("aria-expanded", String(isOpen));
 });
 
-document.addEventListener("click", event => {
-  if (!startMenu.contains(event.target) && !startButton.contains(event.target)) {
-    startMenu.classList.remove("open");
-    startButton.setAttribute("aria-expanded", "false");
+document.addEventListener("click", (event) => {
+  if (!event.target.closest("#startMenu") &&
+      !event.target.closest("#startButton")) {
+    closeStart();
   }
-});
-
-startMenu.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    startMenu.classList.remove("open");
-    startButton.setAttribute("aria-expanded", "false");
-  });
 });
 
 function updateClock() {
   const now = new Date();
-  document.getElementById("clockTime").textContent =
-    now.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
-  document.getElementById("clockDate").textContent =
-    now.toLocaleDateString([], {day: "2-digit", month: "2-digit", year: "numeric"});
+  $("#clockTime").textContent = now.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+  $("#clockDate").textContent = now.toLocaleDateString([], {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
 }
 updateClock();
 setInterval(updateClock, 1000);
-document.getElementById("year").textContent = new Date().getFullYear();
+$("#year").textContent = new Date().getFullYear();
 
-const deviceSearch = document.getElementById("deviceSearch");
-deviceSearch.addEventListener("input", () => {
-  const query = deviceSearch.value.trim().toLowerCase();
+const search = $("#hardwareSearch");
+const hardwareCards = [...document.querySelectorAll(".hardware-card")];
+
+function filterHardware() {
+  const query = search.value.trim().toLowerCase();
   let visible = 0;
-  document.querySelectorAll(".device").forEach(card => {
-    const match = card.textContent.toLowerCase().includes(query);
-    card.classList.toggle("hidden", !match);
-    if (match) visible++;
+
+  hardwareCards.forEach((card) => {
+    const searchableText =
+      (card.dataset.search || "") + " " + card.innerText;
+    const matches = searchableText.toLowerCase().includes(query);
+    card.hidden = !matches;
+    if (matches) visible++;
   });
-  document.getElementById("noResults").classList.toggle("hidden", visible > 0);
+
+  $("#searchCount").textContent =
+    `${visible} of ${hardwareCards.length} hardware entries shown.`;
+}
+search.addEventListener("input", filterHardware);
+filterHardware();
+
+const terminalOutput = $("#terminalOutput");
+const terminalInput = $("#terminalInput");
+const terminalForm = $("#terminalForm");
+const terminalHistory = [];
+
+function runCommand(raw) {
+  const command = raw.trim();
+  if (!command) return "";
+
+  terminalHistory.push("$ " + command);
+
+  switch (command.toLowerCase()) {
+    case "help":
+      return [
+        "Available commands:",
+        "help       - Show this help",
+        "about      - About DaryTech",
+        "projects   - List projects",
+        "hardware   - Show hardware overview",
+        "rokros     - RokrOS Linux status",
+        "esp32      - ESP32 RokrOS project",
+        "neofetch   - Display system information",
+        "date       - Show current date and time",
+        "clear      - Clear terminal",
+        "whoami     - Current simulated user",
+        "sudo       - Nice try :)"
+      ].join("\n");
+
+    case "about":
+      return "DaryTech: technology, hardware restoration, Linux and electronics.";
+
+    case "projects":
+      return [
+        "RokrOS Linux — in development; not released to the public.",
+        "RokrOS for ESP32 — separate embedded project.",
+        "ESP32-S3 Dashboard",
+        "RokrNAS — ESP8266 experiment",
+        "Retro computer restoration",
+        "Android and custom ROM experiments"
+      ].join("\n");
+
+    case "hardware":
+      return "Dell Latitude E6330 | ESP32-S3 N16R8 | ESP8266 | Raspberry Pi 3B+ | Legacy Apple devices";
+
+    case "rokros":
+      return "RokrOS Linux: IN DEVELOPMENT.\nIt has NOT been released to the public.\nNo public download is available yet.";
+
+    case "esp32":
+      return "RokrOS for ESP32 is a separate embedded project. Board: ESP32-S3 N16R8 (16 MB Flash, 8 MB PSRAM).";
+
+    case "neofetch":
+      return [
+        "       .--.        DaryTech",
+        "      |o_o |       Technology Reborn",
+        "      |:_/ |       ------------------",
+        "     //   \\ \\      Website: GitHub Pages",
+        "    (|     | )     Projects: Linux / ESP32",
+        "   /'\\_   _/`\\     Terminal: Simulated",
+        "   \\___)=(___/     RokrOS Linux: Development"
+      ].join("\n");
+
+    case "date":
+      return new Date().toString();
+
+    case "whoami":
+      return "guest";
+
+    case "clear":
+      terminalOutput.textContent = "";
+      return "";
+
+    case "sudo":
+      return "This is a simulated terminal. No system commands are executed.";
+
+    case "rokros":
+      return "RokrOS Linux is in development and has not been released to the public.";
+
+    default:
+      if (command.toLowerCase() === "free tech") {
+        return "doesn't go to waste. ♻️";
+      }
+      return `Command not found: ${command}\nType "help" for available commands.`;
+  }
+}
+
+terminalForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const command = terminalInput.value;
+  const result = runCommand(command);
+
+  if (command.trim().toLowerCase() === "clear") {
+    terminalInput.value = "";
+    terminalInput.focus();
+    return;
+  }
+
+  terminalOutput.textContent +=
+    `\n\n$ ${command}` + (result ? `\n${result}` : "");
+
+  terminalInput.value = "";
+  terminalOutput.scrollTop = terminalOutput.scrollHeight;
 });
 
-const terminalForm = document.getElementById("terminalForm");
-const terminalInput = document.getElementById("terminalInput");
-const terminalOutput = document.getElementById("terminalOutput");
-
-const commands = {
-  help: "Available commands:\nhelp       Show commands\nabout      About DaryTech\nstatus     Show workshop status\nlaptops    List computers\nphones     List phones and tablets\nprojects   List projects\nmotto      Show the DaryTech motto\nclear      Clear terminal\nwhoami     Who is using this terminal",
-  about: "DaryTech — a personal technology and old-hardware revival project.",
-  status: "Dell E6330: Main laptop, Linux Mint 22.3\nDaryCentre: Retired and preserved\nHP dc7900: Disassembled, repair postponed\niPhone 6s: Bypassed, Wi-Fi use",
-  laptops: "Dell Latitude E6330 — i5-3320M, 8 GB DDR3, 120 GB SSD\nLenovo ThinkCentre M57e (DaryCentre) — E8400, 3 GB DDR2, GT 730\nHP Co
+/* Small secret: type "rokros" in the terminal. */
+</script>
+</body>
+</html>
