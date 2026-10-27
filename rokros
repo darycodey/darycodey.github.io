@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090d12">
+<title>RokrOS — Reboot the Ordinary</title>
+<meta name="description" content="RokrOS — an experimental technology project by DaryTech.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg:#090d12;
+  --surface:#101720;
+  --text:#edf3fb;
+  --muted:#8c9aab;
+  --green:#79f2ad;
+  --blue:#76a9ff;
+  --purple:#b79aff;
+  --border:rgba(164,188,216,.13);
+  --mono:"DM Mono",monospace;
+  --sans:"Inter",sans-serif;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent }
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--green);outline-offset:4px}
+::selection{background:var(--green);color:var(--bg)}
+
+.glow{
+  position:absolute;top:-280px;left:35%;width:700px;height:600px;
+  background:rgba(51,118,167,.13);filter:blur(130px);border-radius:50%;
+  pointer-events:none;z-index:-1
+}
+
+.navbar{
+  height:82px;max-width:1240px;margin:auto;padding:0 36px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:10;border-bottom:1px solid var(--border)
+}
+.brand{display:inline-flex;align-items:center;gap:11px;font-weight:800;font-size:21px;letter-spacing:-.8px}
+.brand-icon{
+  display:grid;place-items:center;width:35px;height:35px;border-radius:10px;
+  color:#08130d;background:var(--green);font-weight:900;
+  box-shadow:0 0 28px rgba(121,242,173,.18)
+}
+.accent{color:var(--green)}
+.nav-links{display:flex;gap:30px}
+.nav-links a,.footer a:not(.brand){font-size:12px;color:var(--muted);transition:color .2s}
+.nav-links a:hover,.footer a:hover{color:var(--green)}
+.nav-cta{font-size:12px;font-weight:600;border:1px solid var(--border);border-radius:8px;padding:11px 15px}
+.nav-cta span{color:var(--green);margin-left:6px}
+.menu-toggle{display:none;background:none;color:var(--text);border:0;font-size:25px;cursor:pointer}
+
+.section{max-width:1240px;margin:auto;padding:100px 36px}
+.hero{min-height:660px;display:grid;grid-template-columns:1fr 1fr;gap:65px;align-items:center;padding-top:90px;padding-bottom:105px}
+.eyebrow,.kicker,.visual-label{display:inline-flex;align-items:center;gap:9px;font:10px var(--mono);letter-spacing:1.6px;color:var(--green)}
+.dot{display:inline-block;width:7px;height:7px;flex-shrink:0;border-radius:50%;background:var(--green);box-shadow:0 0 12px rgba(121,242,173,.65)}
+h1{margin:26px 0 23px;font-size:clamp(54px,6.4vw,83px);line-height:1.02;letter-spacing:-5px;font-weight:800}
+.gradient{background:linear-gradient(100deg,var(--green),#76caff 65%,var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.description{max-width:480px;color:var(--muted);font-size:15px;line-height:1.9}
+.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:13px;min-height:46px;padding:0 19px;border-radius:8px;font-size:12px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.primary{background:var(--green);color:#07130c}
+.primary:hover{box-shadow:0 7px 30px rgba(121,242,173,.22)}
+.secondary{border:1px solid var(--border);color:var(--text)}
+.secondary:hover{border-color:rgba(121,242,173,.5)}
+.note{margin-top:37px;display:flex;gap:12px;align-items:center;color:#748295;font:10px var(--mono)}
+.note strong{color:var(--green);font-size:16px}
+
+.visual{position:relative;padding:25px 0}
+.visual-label{margin:0 0 16px 10px;color:#94a7bb;font-size:9px}
+.window{overflow:hidden;border:1px solid rgba(147,178,205,.2);border-radius:13px;background:rgba(12,18,26,.95);box-shadow:0 30px 90px #0006,0 0 70px #5b96ca0f;transform:perspective(1100px) rotateY(-3deg)}
+.window-top{height:43px;padding:0 14px;background:#141c26;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;color:#8494a7;font:10px var(--mono)}
+.window-dots{display:flex;gap:5px}
+.window-dots i{display:block;width:8px;height:8px;background:#536171;border-radius:50%}
+.window-dots i:first-child{background:#ff7474}
+.window-dots i:nth-child(2){background:#f4c66a}
+.window-dots i:nth-child(3){background:var(--green)}
+.terminal{min-height:295px;padding:26px 24px;color:#c6d4e3;font:11px/2 var(--mono)}
+.terminal-muted{color:#65778b;margin-bottom:13px}
+.green{color:var(--green)}
+.blue{color:var(--blue)}
+.system{display:flex;align-items:center;gap:18px;margin:18px 0}
+.ascii{color:var(--green);font:10px/1.5 var(--mono);white-space:pre}
+.info{font-size:10px;line-height:2}
+.info b{color:#edf3fb}
+.cursor{display:inline-block;width:7px;height:13px;vertical-align:middle;background:var(--green);animation:blink 1s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.window-bottom{padding:8px 15px;display:flex;justify-content:space-between;color:#68798c;font:9px var(--mono);border-top:1px solid var(--border)}
+.chip{position:absolute;display:flex;align-items:center;gap:9px;padding:11px 14px;background:#111a25f5;border:1px solid var(--border);border-radius:9px;font-size:10px;color:#c9d6e5;box-shadow:0 10px 35px #0004}
+.chip-top{top:3px;right:-10px}
+.chip-bottom{bottom:4px;left:-20px}
+.chip b{color:var(--green);font-size:16px}
+
+.stats{max-width:1168px;margin:auto;padding:27px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat{display:flex;align-items:center;gap:13px}
+.symbol{font-size:24px;color:var(--green)}
+.stat b,.stat small{display:block}
+.stat b{font-size:11px}
+.stat small{color:var(--muted);font-size:10px;margin-top:2px}
+
+.content{padding-top:125px;padding-bottom:125px}
+.heading{max-width:600px;margin-bottom:47px}
+.heading h2,.about-copy h2,.download h2{margin-top:17px;font-size:clamp(34px,4vw,51px);line-height:1.15;letter-spacing:-2px}
+.heading>p,.about-copy>p,.download>p{color:var(--muted);font-size:13px;line-height:1.9;margin-top:17px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{min-height:245px;padding:27px;border:1px solid var(--border);border-radius:12px;background:linear-gradient(145deg,#141e2acc,#0c1118cc);transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-5px);border-color:#79f2ad55}
+.icon{display:grid;place-items:center;width:43px;height:43px;border-radius:11px;font-size:22px;margin-bottom:24px}
+.purple{color:var(--purple);background:#b79aff1f}
+.icon.green-bg{color:var(--green);background:#79f2ad19}
+.orange{color:#ffbd80;background:#ffbd8019}
+.card h3{font-size:16px;margin-bottom:10px}
+.card p{color:var(--muted);font-size:12px;line-height:1.9}
+.card-number{display:block;margin-top:23px;color:#64768a;font:9px var(--mono);letter-spacing:1px}
+
+.about-section{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(100deg,#0f1923cc,#090d1280)}
+.about-inner{max-width:1168px;margin:auto;padding:100px 36px;display:grid;grid-template-columns:.9fr 1.1fr;gap:95px;align-items:center}
+.orbit-art{position:relative;min-height:340px;display:grid;place-items:center;overflow:hidden}
+.orbit{position:absolute;border:1px solid #79f2ad2e;border-radius:50%;width:260px;height:260px}
+.orbit.two{width:185px;height:185px;border-color:#76a9ff47}
+.core{display:grid;place-items:center;width:105px;height:105px;border-radius:28px;background:linear-gradient(135deg,var(--green),var(--blue));box-shadow:0 0 80px #79f2ad26;transform:rotate(-8deg)}
+.core span{font-size:62px;font-weight:900;color:#09130f;transform:rotate(8deg)}
+.tag{position:absolute;padding:6px 11px;border:1px solid var(--border);border-radius:5px;background:#101720;color:#c2d1e0;font:9px var(--mono);letter-spacing:1px}
+.tag.one{top:36px;left:25px}
+.tag.two{right:8px;top:105px}
+.tag.three{bottom:39px;left:65px}
+.about-copy>p{margin-bottom:14px}
+.text-link{display:inline-flex;gap:12px;margin-top:15px;color:var(--green);font-size:12px;font-weight:700}
+
+.roadmap-section{display:grid;grid-template-columns:.9fr 1.1fr;gap:85px}
+.roadmap{border-top:1px solid var(--border)}
+.road-item{display:grid;grid-template-columns:42px 1fr;gap:17px;padding:24px 0;border-bottom:1px solid var(--border)}
+.road-number{display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--border);border-radius:9px;color:var(--green);font:11px var(--mono)}
+.road-status{font:9px var(--mono);color:var(--green);letter-spacing:1px}
+.road-item h3{font-size:15px;margin:5px 0}
+.road-item p{font-size:12px;color:var(--muted);line-height:1.8}
+
+.download{position:relative;overflow:hidden;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:#0d141c}
+.download-inner{position:relative;z-index:1;max-width:750px;margin:auto;padding:100px 25px}
+.download-glow{position:absolute;top:-260px;left:50%;width:600px;height:500px;transform:translateX(-50%);background:#58aa591a;filter:blur(110px)}
+.download p{max-width:470px;margin:20px auto 0}
+.centered{justify-content:center}
+.download-note{display:flex;align-items:center;justify-content:center;gap:10px;font:10px var(--mono)!important;margin-top:29px!important}
+
+.footer{max-width:1240px;margin:auto;min-height:100px;padding:25px 36px;display:flex;gap:24px;align-items:center;justify-content:space-between}
+.footer .brand{font-size:17px}
+.footer .brand-icon{width:29px;height:29px;font-size:15px;border-radius:8px}
+.footer p,.copyright{font-size:10px;color:var(--muted)}
+
+/* Hidden terminal */
+.secret{display:none;position:fixed;inset:0;z-index:100;padding:20px;place-items:center;background:#03070ad1;backdrop-filter:blur(8px)}
+.secret.open{display:grid}
+.secret-window{width:min(600px,100%);overflow:hidden;border:1px solid #79f2ad59;border-radius:12px;background:#080e0c;box-shadow:0 0 70px #79f2ad17}
+.secret-header{display:flex;align-items:center;justify-content:space-between;padding:13px 17px;border-bottom:1px solid #79f2ad2e;color:var(--green);font:10px var(--mono)}
+.secret-header span{display:flex;align-items:center;gap:10px}
+.secret-header button{background:none;border:none;color:#d8e7de;font-size:23px;cursor:pointer}
+.output{min-height:180px;max-height:300px;overflow-y:auto;padding:18px;color:#b6c9bc;font:11px/2 var(--mono);overflow-wrap:anywhere}
+.output p{margin-bottom:5px}
+.output .error{color:#ff8f8f}
+.output .success{color:var(--green)}
+#terminalForm{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:13px 18px;border-top:1px solid #79f2ad2e;font:11px var(--mono);color:var(--green)}
+#terminalInput{flex:1;min-width:100px;color:#e8f6eb;background:transparent;border:0;outline:none;caret-color:var(--green)}
+
+@media(max-width:900px){
+  .navbar{padding:0 23px}
+  .nav-links{gap:17px}
+  .nav-links a{font-size:11px}
+  .hero{gap:35px}
+  h1{font-size:clamp(51px,7vw,70px);letter-spacing:-3px}
+  .ascii{font-size:8px}
+  .terminal{padding:20px 15px}
+  .stats{padding-left:23px;padding-right:23px}
+  .about-inner{gap:40px}
+  .roadmap-section{gap:45px}
+}
+@media(max-width:680px){
+  .navbar{height:70px}
+  .nav-cta{display:none}
+  .menu-toggle{display:block}
+  .nav-links{display:none;position:absolute;top:69px;left:0;right:0;padding:18px 24px 24px;flex-direction:column;gap:19px;background:#0d141c;border-bottom:1px solid var(--border)}
+  .nav-links.show{display:flex}
+  .nav-links a{font-size:13px}
+  .section{padding:75px 23px}
+  .hero{grid-template-columns:1fr;gap:40px;padding-top:65px}
+  h1{font-size:clamp(55px,13vw,76px)}
+  .visual{margin:0 5px}
+  .window{transform:none}
+  .system{gap:10px}
+  .ascii{font-size:clamp(6px,1.8vw,9px)}
+  .info{font-size:9px}
+  .terminal{font-size:10px}
+  .chip-top{right:-5px}
+  .chip-bottom{left:-5px}
+  .stats{grid-template-columns:1fr 1fr;gap:25px 15px;padding:27px 23px}
+  .cards{grid-template-columns:1fr}
+  .card{min-height:auto}
+  .about-inner{grid-template-columns:1fr;gap:25px;padding:75px 23px}
+  .orbit-art{min-height:280px}
+  .roadmap-section{grid-template-columns:1fr;gap:35px}
+  .download-inner{padding:80px 23px}
+  .footer{padding:28px 23px;flex-wrap:wrap;gap:16px}
+  .footer p,.copyright{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+
+<body>
+<div class="glow"></div>
+
+<header class="navbar">
+  <a class="brand" href="#home"><span class="brand-icon">R</span><span>Rokr<span class="accent">OS</span></span></a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#download">Download</a>
+  </nav>
+  <a class="nav-cta" href="#download">Explore RokrOS <span>↗</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+</header>
+
+<main>
+<section class="section hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> AN EXPERIMENT IN OPEN TECHNOLOGY</div>
+    <h1>Reboot the<br><span class="gradient">ordinary.</span></h1>
+    <p class="description">Meet RokrOS — a project exploring what's possible when curiosity, creativity, and hardware come together.</p>
+    <div class="buttons">
+      <a class="btn primary" href="#about">Discover RokrOS <span>→</span></a>
+      <a class="btn secondary" href="#roadmap">View the roadmap</a>
+    </div>
+    <div class="note"><strong>$_</strong><span>Built by experimenting. Driven by curiosity.</span></div>
+  </div>
+
+  <div class="visual">
+    <div class="visual-label"><span class="dot"></span> SYSTEM CONCEPT</div>
+    <div class="window">
+      <div class="window-top">
+        <div class="window-dots"><i></i><i></i><i></i></div>
+        <span>rokr-terminal — 80 × 24</span><span>···</span>
+      </div>
+      <div class="terminal">
+        <p class="terminal-muted">RokrOS interactive shell</p>
+        <p><span class="green">user@rokros</span>:<span class="blue">~</span>$ neofetch</p>
+        <div class="system">
+<pre class="ascii">  ____       _     ____   ____
+ |  _ \ ___ | | __|  _ \ / ___|
+ | |_) / _ \| |/ /| |_) | |
+ |  _ < (_) |   < |  _ <| |___
+ |_| \_\___/|_|\_\|_| \_\\____|</pre>
+          <div class="info">
+            <p><b>OS</b>: RokrOS</p>
+            <p><b>Type</b>: Experimental</p>
+            <p><b>Philosophy</b>: Open</p>
+            <p><b>Mission</b>: Explore</p>
+            <p><b>Creator</b>: DaryTech</p>
+            <p class="green">● Ready for discovery</p>
+          </div>
+        </div>
+        <p><span class="green">user@rokros</span>:<span class="blue">~</span>$ <span class="cursor"></span></p>
+      </div>
+      <div class="window-bottom"><span>UTF-8</span><span>LOCAL SESSION</span></div>
+    </div>
+    <div class="chip chip-top"><b>✳</b> Built to experiment</div>
+    <div class="chip chip-bottom"><span class="dot"></span> Curiosity: ACTIVE</div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><span class="symbol">⌘</span><span><b>Open-minded</b><small>Built around learning</small></span></div>
+  <div class="stat"><span class="symbol">⌁</span><span><b>Experimental</b><small>Try something different</small></span></div>
+  <div class="stat"><span class="symbol">⌬</span><span><b>Hardware curious</b><small>From boards to computers</small></span></div>
+  <div class="stat"><span class="symbol">↗</span><span><b>Always evolving</b><small>A project in progress</small></span></div>
+</section>
+
+<section class="section content" id="features">
+  <div class="heading">
+    <span class="kicker">THE PHILOSOPHY</span>
+    <h2>Less limitation.<br><span class="gradient">More exploration.</span></h2>
+    <p>Technology should be something you can understand, experiment with, and make your own.</p>
+  </div>
+  <div class="cards">
+    <article class="card">
+      <div class="icon purple">⌘</div><h3>Built to explore</h3>
+      <p>A place for testing ideas, learning how systems work, and finding new ways to use technology.</p>
+      <span class="card-number">01 / EXPLORE</span>
+    </article>
+    <article class="card">
+      <div class="icon green-bg">⌁</div><h3>Hardware first</h3>
+      <p>Inspired by hands-on experimentation, embedded projects, and getting more out of existing hardware.</p>
+      <span class="card-number">02 / BUILD</span>
+    </article>
+    <article class="card">
+      <div class="icon orange">⌬</div><h3>Learn by doing</h3>
+      <p>Every experiment is a chance to understand more about software, systems, and engineering.</p>
+      <span class="card-number">03 / LEARN</span>
+    </article>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="orbit-art">
+      <div class="orbit"></div><div class="orbit two"></div>
+      <div class="core"><span>R</span></div>
+      <span class="tag one">OPEN</span><span class="tag two">CREATE</span><span class="tag three">REPEAT</span>
+    </div>
+    <div class="about-copy">
+      <span class="kicker">WHAT IS ROKROS?</span>
+      <h2>A project with<br>a <span class="gradient">different mindset.</span></h2>
+      <p>RokrOS is an independent technology project by DaryTech. It's a space to experiment with operating-system ideas, explore hardware, and turn curiosity into working projects.</p>
+      <p>This website is the project's home on the web. As development progresses, updates, experiments, and future releases can appear here.</p>
+      <a class="text-link" href="https://darycodey.github.io/" target="_blank" rel="noopener noreferrer">Visit DaryTech <span>↗</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="section content roadmap-section" id="roadmap">
+  <div class="heading">
+    <span class="kicker">THE ROAD AHEAD</span>
+    <h2>One experiment<br>at a time.</h2>
+    <p>Planning stages for the project, not claims of completed features.</p>
+  </div>
+  <div class="roadmap">
+    <article class="road-item"><span class="road-number">01</span><div><span class="road-status">FOUNDATION</span><h3>Define the vision</h3><p>Document the goals, target hardware, and core ideas behind RokrOS.</p></div></article>
+    <article class="road-item"><span class="road-number">02</span><div><span class="road-status">EXPERIMENTS</span><h3>Build and test</h3><p>Prototype features, test hardware, and record what works.</p></div></article>
+    <article class="road-item"><span class="road-number">03</span><div><span class="road-status">DOCUMENTATION</span><h3>Share the progress</h3><p>Publish build notes, project updates, and instructions as they become available.</p></div></article>
+    <article class="road-item"><span class="road-number">04</span><div><span class="road-status">FUTURE</span><h3>Release when ready</h3><p>Provide downloads and release notes if and when a usable build is available.</p></div></article>
+  </div>
+</section>
+
+<section class="download" id="download">
+  <div class="download-glow"></div>
+  <div class="download-inner">
+    <span class="kicker">YOUR NEXT EXPERIMENT</span>
+    <h2>Curiosity starts<br><span class="gradient">somewhere.</span></h2>
+    <p>RokrOS is a work in progress. Follow the project for updates as development moves forward.</p>
+    <div class="buttons centered">
+      <a class="btn primary" href="https://darycodey.github.io/" target="_blank" rel="noopener noreferrer">Explore DaryTech ↗</a>
+      <a class="btn secondary" href="#home">Back to the top ↑</a>
+    </div>
+    <p class="download-note"><span class="dot"></span> No official downloadable build is advertised here yet.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <a class="brand" href="#home"><span class="brand-icon">R</span><span>Rokr<span class="accent">OS</span></span></a>
+  <p>Made with curiosity by DaryTech.</p>
+  <a href="https://darycodey.github.io/" target="_blank" rel="noopener noreferrer">DaryTech ↗</a>
+  <span class="copyright">© <span id="year"></span> RokrOS Project</span>
+</footer>
+
+<!-- Easter egg: type "rokros" anywhere on the page -->
+<div class="secret" id="secret" aria-hidden="true">
+  <div class="secret-window">
+    <div class="secret-header">
+      <span><i class="dot"></i> ROKROS SECRET SHELL</span>
+      <button id="closeTerminal" aria-label="Close terminal">×</button>
+    </div>
+    <div class="output" id="output">
+      <p>RokrOS secret shell [web edition]</p>
+      <p>Type <b>help</b> to see available commands.</p>
+    </div>
+    <form id="terminalForm" autocomplete="off">
+      <label for="terminalInput">visitor@rokros:~$</label>
+      <input id="terminalInput" type="text" spellcheck="false" autocomplete="off">
+    </form>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+$("year").textContent = new Date().getFullYear();
+
+const menu = $("navLinks");
+const menuButton = $("menuToggle");
+
+menuButton.addEventListener("click", () => {
+  const open = menu.classList.toggle("show");
+  menuButton.setAttribute("aria-expanded", String(open));
+  menuButton.textContent = open ? "×" : "☰";
+});
+
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("show");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰";
+  });
+});
+
+const secret = $("secret");
+const input = $("terminalInput");
+const output = $("output");
+let typed = "";
+
+function openTerminal() {
+  secret.classList.add("open");
+  secret.setAttribute("aria-hidden", "false");
+  input.value = "";
+  setTimeout(() => input.focus(), 50);
+}
+
+function closeTerminal() {
+  secret.classList.remove("open");
+  secret.setAttribute("aria-hidden", "true");
+}
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeTerminal();
+
+  if (
+    event.ctrlKey || event.altKey || event.metaKey ||
+    event.key.length !== 1 ||
+    event.target instanceof HTMLInputElement ||
+    event.target instanceof HTMLTextAreaElement
+  ) return;
+
+  typed = (typed + event.key.toLowerCase()).slice(-6);
+  if (typed === "rokros") {
+    openTerminal();
+    typed = "";
+  }
+});
+
+$("closeTerminal").addEventListener("click", closeTerminal);
+
+secret.addEventListener("click", event => {
+  if (event.target === secret) closeTerminal();
+});
+
+function line(text, className = "") {
+  const p = document.createElement("p");
+  p.textContent = text;
+  if (className) p.className = className;
+  output.appendChild(p);
+  output.scrollTop = output.scrollHeight;
+}
+
+const commands = {
+  help() {
+    line("Available commands:", "success");
+    line("help      - Show available commands");
+    line("about     - About RokrOS");
+    line("neofetch  - Show project information");
+    line("date      - Display local date and time");
+    line("clear     - Clear terminal output");
+    line("exit      - Close terminal");
+  },
+
+  about() {
+    line("RokrOS is an experimental technology project.");
+    line("Created by DaryTech. Built around curiosity.");
+    line("This is a simulated web terminal, not a real OS shell.");
+  },
+
+  neofetch() {
+    line("       ____       _     ____   ____", "success");
+    line("      |  _ \\ ___ | | __|  _ \\ / ___|", "success");
+    line("      | |_) / _ \\| |/ /| |_) | |", "success");
+    line("      |  _ < (_) |   < |  _ <| |___", "success");
+    line("      |_| \\_\\___/|_|\\_\\|_| \\_\\\\____|", "success");
+    line("");
+    line("OS: RokrOS project website");
+    line("Creator: DaryTech");
+    line("Shell: Rokr Web Shell");
+    line("Status: Exploring");
+  },
+
+  date() {
+    line(new Date().toLocaleString());
+  },
+
+  clear() {
+    output.replaceChildren();
+  },
+
+  exit() {
+    closeTerminal();
+  }
+};
+
+$("terminalForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const raw = input.value.trim();
+  if (!raw) return;
+
+  line("visitor@rokros:~$ " + raw);
+
+  const command = raw.toLowerCase();
+  if (Object.prototype.hasOwnProperty.call(commands, command)) {
+    commands[command]();
+  } else {
+    line('Command not found: ' + raw + '. Type "help" for commands.', "error");
+  }
+
+  input.value = "";
+});
+</script>
+</body>
+</html>
 
